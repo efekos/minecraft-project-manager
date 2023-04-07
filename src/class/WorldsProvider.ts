@@ -43,7 +43,7 @@ export class WorldsProvider implements TreeDataProvider<Items<Datapack>> {
             const mcmeta = JSON.parse(readFileSync(mcmetaDir).toString('utf8'));
             if (!mcmeta.pack.pack_format || !mcmeta.pack.description) { return; }
 
-            result.push(new Datapack(packFolder, TreeItemCollapsibleState.None, { description: mcmeta.pack.description, name: packFolder, version: this.getVersionFromFormat(mcmeta.pack.pack_format),directory:join(directory,packFolder) },
+            result.push(new Datapack(packFolder, TreeItemCollapsibleState.None, { description: mcmeta.pack.description, name: packFolder, version: this.getVersionFromFormat(mcmeta.pack.pack_format), directory: join(directory, packFolder) },
                 {
                     command: 'mc.open',
                     title: '',
@@ -83,7 +83,7 @@ export interface DatapackData {
     name: string,
     version: string,
     description: string;
-    directory:string
+    directory: string;
 }
 
 export class Datapack extends TreeItem {

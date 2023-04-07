@@ -2,16 +2,19 @@
   "name": "minecraft-project-manager",
   "displayName": "Minecraft Project Manager",
   "description": "Project Manager For Minecraft Datapacks",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.77.0"
   },
-  "author": {
-    "email": "hefeolgun10@gmail.com",
-    "name": "efekos"
+  "icon": "./images/extensionIcon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/efe124/minecraft-project-manager"
   },
+  "publisher": "efekos",
   "license": "ISC",
   "categories": [
+    "Visualization",
     "Other"
   ],
   "activationEvents": [
