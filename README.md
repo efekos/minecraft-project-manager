@@ -1,3 +1,4 @@
+![Extension Icon](./images/extensionIconSmalll.png)
 # Minecraft Project Manager
 
 This extension will help you managing your Minecraft datapacks and switch between them easily.
@@ -10,7 +11,7 @@ This extension will help you managing your Minecraft datapacks and switch betwee
 * Create datapacks or delete existing datapacks easily!
 * Easily switch the workspace between datapacks!
 
-![Showcase](/images/showcase.gif)
+![Showcase](./images/showcase.gif)
 
 ## Known Issues
 
