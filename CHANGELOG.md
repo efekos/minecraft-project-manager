@@ -1,5 +1,12 @@
 # Change Log
 
-## 1.0.0
+This file contains all change logs in Minecraft Project Manager.
 
-Initial release
+# Unreleased
+
+## 0.0.1
+* Initial first build of MPM.
+
+## 0.0.2
+* Changed command `mc.world.create`
+* Changed command `mc.datapack.delete`
