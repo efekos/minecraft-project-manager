@@ -6,17 +6,11 @@ This extension will help you managing your Minecraft datapacks and switch betwee
 
 ## Features
 
-See your Minecraft worlds and datapacks they have!
+* See your Minecraft worlds and datapacks they have!
+* Create datapacks or delete existing datapacks easily!
+* Easily switch the workspace between datapacks!
 
-![img]
-
-Create datapacks or delete existing datapacks easily!
-
-![img]
-
-Easily switch the workspace between datapacks!
-
-![img]
+![Showcase](/images/showcase.gif)
 
 ## Known Issues
 

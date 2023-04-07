@@ -1,7 +1,3 @@
-# Change Log
-
-This file contains all notable change logs in Minecraft Project Manager.
-
 # Unreleased
 
 ## 0.0.1
