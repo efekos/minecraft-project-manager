@@ -6,7 +6,7 @@
   "engines": {
     "vscode": "^1.77.0"
   },
-  "icon": "./images/extensionIcon.png",
+  "icon": "images/extensionIcon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/efe124/minecraft-project-manager"
