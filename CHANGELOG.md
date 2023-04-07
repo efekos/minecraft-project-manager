@@ -11,3 +11,6 @@
 * Added extension icon
 * Changed world icon
 * Changed sidebar icon
+
+## 0.0.4
+* > Changed command handling system
