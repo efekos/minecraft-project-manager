@@ -14,3 +14,9 @@
 
 ## 0.0.4
 * > Changed command handling system
+
+## 0.0.5
+* Added setting `minecraftProjectManager.worlds.defaultPackFormat`
+* Added setting `minecraftProjectManager.worlds.defaultPackDescription`
+* Added 'Do not show again' to notifications
+* > Added comments to where users might need to understand the source code 

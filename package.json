@@ -2,7 +2,7 @@
   "name": "minecraft-project-manager",
   "displayName": "Minecraft Project Manager",
   "description": "Project Manager For Minecraft Datapacks",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "engines": {
     "vscode": "^1.77.0"
   },
@@ -22,6 +22,24 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {
+    "configuration":
+      {
+        "title": "Minecraft Project Manager",
+        "properties": {
+          "minecraftProjectManager.worlds.defaultPackFormat":{
+            "type":"number",
+            "title": "Default Pack Format",
+            "markdownDescription": "Default pack format while generating a new datapack. [learn more about pack formats](https://minecraft.fandom.com/wiki/Pack_format)",
+            "default":9
+          },
+          "minecraftProjectManager.worlds.defaultPackDescription":{
+            "type":"string",
+            "title": "Default Pack Description",
+            "description": "Default pack description while generating a new datapack.",
+            "default": "pack"
+          }
+        }
+      },
     "commands": [
       {
         "command": "mc.world.create",

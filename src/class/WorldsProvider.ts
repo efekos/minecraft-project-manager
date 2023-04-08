@@ -2,6 +2,7 @@ import { existsSync, readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import { Command, Event, EventEmitter, ThemeIcon, TreeDataProvider, TreeItem, TreeItemCollapsibleState, TreeItemLabel, Uri } from "vscode";
 
+// type to trick data provider that im using one type
 export type Items<T> = World<T> | T;
 
 export class WorldsProvider implements TreeDataProvider<Items<Datapack>> {
@@ -11,15 +12,25 @@ export class WorldsProvider implements TreeDataProvider<Items<Datapack>> {
     constructor() {
     }
 
+    /**
+     * refreshes worlds menu
+     */
     refresh(): void {
         this.getChildren();
         this._onDidChangeTreeData.fire();
     }
 
+    //idk what this is why would i want to get a tree item when i already have it
     getTreeItem(element: TreeItem): TreeItem {
         return element;
     }
 
+    /**
+     * Gets mc version from a format
+     * @param format pack format
+     * @returns mc version of what format means, gets - and + if its not between 1.14-1.19
+     * @since 0.0.2
+     */
     getVersionFromFormat(format: number): string {
         if (format === 0) { return "1.14-"; };
         if (format === 2) { return "1.14-"; };
@@ -35,6 +46,12 @@ export class WorldsProvider implements TreeDataProvider<Items<Datapack>> {
         return "?";
     }
 
+    /**
+     * Gets datapacks of a world as a Datapack class
+     * @param directory datapacks directory of a world
+     * @returns datapacks found as Datapack
+     * @since 0.0.2
+     */
     getDatapacks(directory: string): Datapack[] {
         const result: Datapack[] = [];
         readdirSync(directory).forEach(packFolder => {
@@ -56,11 +73,14 @@ export class WorldsProvider implements TreeDataProvider<Items<Datapack>> {
 
     async getChildren(element?: World<Datapack>): Promise<Items<Datapack>[]> {
 
+        // get its current packs if its a world
         if (element) { return Promise.resolve(element.data.currentItems); };
 
+        //get saves and worlds
         const savesDir = join(process.env.APPDATA as string, '.minecraft', 'saves');
         const worlds = await readdirSync(savesDir);
 
+        //convert every world name to a World<Datapack>
         const items = await worlds.map(r => new World<Datapack>(r, TreeItemCollapsibleState.Collapsed, {
             currentItems: this.getDatapacks(join(savesDir, r, 'datapacks')),
             datapacksDirectory: join(savesDir, r, 'datapacks'),
@@ -72,6 +92,7 @@ export class WorldsProvider implements TreeDataProvider<Items<Datapack>> {
     }
 }
 
+// class definitions
 export interface WorldData<T> {
     name: string,
     directory: string,

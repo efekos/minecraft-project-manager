@@ -13,13 +13,18 @@ This extension will help you managing your Minecraft datapacks and switch betwee
 
 ![Showcase](./images/showcase.gif)
 
+## Configuration
+
+This extension contributes the following settings:
+* `minecraftProjectManager.worlds.defaultPackFormat`: Default pack format to use while creating a new datapack.
+* `minecraftProjectManager.worlds.defaultPackDescription`: Default pack description to use while creating a new datapack.
+
 ## Known Issues
 
 There is no known issues yet.
 
----
-
 ## Release Notes
+---
 
 ### 1.0.0
 
