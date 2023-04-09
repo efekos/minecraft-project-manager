@@ -20,3 +20,11 @@
 * Added setting `minecraftProjectManager.worlds.defaultPackDescription`
 * Added 'Do not show again' to notifications
 * > Added comments to where users might need to understand the source code 
+
+## 0.0.6
+* Added view `MCM: Current Pack`: Datapack item tree to see what you have more easily
+* Added command `mc.workspace.refresh`: Refresh Current Pack
+* Added command `mc.workspace.function.create`: Create New Function
+* Added command `mc.workspace.function.delete`: Delete a Function
+* Added a clone of vscode symbols to `./images/icons`
+* Changed view name from `Current Pack: Current Pack ` to `MCM: Current Pack`

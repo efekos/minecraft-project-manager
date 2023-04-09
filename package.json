@@ -67,6 +67,30 @@
         "enablement": "true",
         "icon":"$(trash)",
         "category": "MCM"
+      },
+      {
+        "command": "mc.workspace.refresh",
+        "category": "MCM",
+        "icon":"$(refresh)",
+        "title": "Refresh Pack",
+        "shortTitle": "Refresh",
+        "enablement": "true"
+      },
+      {
+        "command": "mc.workspace.function.create",
+        "title": "Create New Function in Workspace",
+        "icon":"$(plus)",
+        "category": "MCM",
+        "enablement": "true",
+        "shortTitle": "Create new Function"
+      },
+      {
+        "command": "mc.workspace.function.delete",
+        "title": "Delete a Function in Workspace",
+        "icon":"$(trash)",
+        "category": "MCM",
+        "enablement": "true",
+        "shortTitle": "Delete a Function"
       }
     ],
     "viewsContainers": {
@@ -95,6 +119,18 @@
         {
           "command": "mc.datapack.delete",
           "when": "false"
+        },
+        {
+          "command": "mc.workspace.refresh",
+          "when": "false"
+        },
+        {
+          "command": "mc.workspace.function.create",
+          "when": "false"
+        },
+        {
+          "command": "mc.workspace.function.delete",
+          "when": "false"
         }
       ],
       "view/title": [
@@ -102,6 +138,11 @@
           "command": "mc.refresh",
           "when": "view == worlds",
           "group": "navigation@1"
+        },
+        {
+          "command": "mc.workspace.refresh",
+          "when": "view==workspace",
+          "group": "navigation"
         }
       ],
       "view/item/context": [
@@ -114,6 +155,16 @@
           "when": "view == worlds && viewItem == datapack",
           "group": "inline",
           "command": "mc.datapack.delete"
+        },
+        {
+          "when": "view== workspace && (viewItem == functionRoot || viewItem == functionFolder)",
+          "command": "mc.workspace.function.create",
+          "group": "inline"
+        },
+        {
+          "when": "view==workspace && viewItem==function",
+          "command": "mc.workspace.function.delete",
+          "group": "inline"
         }
       ]
     },
@@ -124,7 +175,15 @@
           "name": "Worlds",
           "visibility": "visible",
           "type": "tree",
-          "contextualTitle": "Worlds",
+          "contextualTitle": "MCM",
+          "icon": "./images/icon.svg"
+        },
+        {
+          "id": "workspace",
+          "name": "Current Pack",
+          "visibility": "collapsed",
+          "type": "tree",
+          "contextualTitle": "MCM",
           "icon": "./images/icon.svg"
         }
       ]
@@ -135,6 +194,12 @@
         "contents": "No worlds yet. Make a minecraft world to manage It's datapacks from here",
         "view":"mctab",
         "when": "view==worlds"
+      },
+      {
+        "enablement": "true",
+        "view":"mctab",
+        "when": "view==workspace",
+        "contents": "There is no `mcmconfig.json` file found in the current workspace.\n[Create One](command:mc.refresh)"
       }
     ]
   },

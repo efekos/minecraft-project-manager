@@ -1,0 +1,2 @@
+every icon here is cloned from this repository
+https://github.com/microsoft/vscode-icons
