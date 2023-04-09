@@ -11,6 +11,16 @@
     "type": "git",
     "url": "https://github.com/efe124/minecraft-project-manager"
   },
+  "keywords": [
+    "minecraft",
+    "datapack",
+    "minecraft datapack",
+    "manager",
+    "project"
+  ],
+  "sponsor": {
+    "url": "https://patreon.com/user?u=87165918"
+  },
   "publisher": "efekos",
   "license": "ISC",
   "categories": [
