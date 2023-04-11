@@ -4,6 +4,53 @@ import { Command, Event, EventEmitter, ThemeColor, ThemeIcon, TreeDataProvider, 
 import { UtilFunctions } from "./UtilFunctions";
 import { notifications } from "./NotificationProvider";
 
+
+function getChilds(element: PackItem): Thenable<PackItem[]> {
+
+    switch (element.type) {
+        case PackItemType.namespace: // *get basic things under a namespace
+            return Promise.resolve([
+                new PackItem('Functions', TreeItemCollapsibleState.Collapsed, PackItemType.functionRoot, join(element.dir, 'functions')),
+                new PackItem('Tags', TreeItemCollapsibleState.Collapsed, PackItemType.tagRoot, join(element.dir, 'tags'))
+            ]);
+        case PackItemType.functionRoot: // *get the elements under a root or folder
+        case PackItemType.functionFolder:
+            if (!existsSync(element.dir)) { return Promise.resolve([]); };
+
+            const items = readdirSync(element.dir).map(r => {
+                if (UtilFunctions.getExtension(r) === "mcfunction") {
+                    return new PackItem(UtilFunctions.makeNameGrammar(r), TreeItemCollapsibleState.None, PackItemType.function, join(element.dir, r), {
+                        command: 'vscode.open',
+                        title: '',
+                        arguments: [Uri.file(join(element.dir, r))]
+                    });
+                } else {
+                    return new PackItem(UtilFunctions.makeNameGrammar(r), TreeItemCollapsibleState.Collapsed, PackItemType.functionFolder, join(element.dir, r));
+                }
+            });
+
+            return Promise.resolve(items);
+        case PackItemType.tagRoot:
+        case PackItemType.tagFolder: // *get the elements under a root or folder
+            if (!existsSync(element.dir)) { return Promise.resolve([]); }
+
+            const itemss = readdirSync(element.dir).map(r => {
+                if (UtilFunctions.getExtension(r) === "json") {
+                    return new PackItem(UtilFunctions.makeNameGrammar(r), TreeItemCollapsibleState.None, PackItemType.tag, join(element.dir, r), {
+                        command: 'vscode.open',
+                        title: '',
+                        arguments: [Uri.file(join(element.dir, r))]
+                    });
+                } else {
+                    return new PackItem(UtilFunctions.makeNameGrammar(r), TreeItemCollapsibleState.Collapsed, PackItemType.tagFolder, join(element.dir, r));
+                }
+            });
+
+            return Promise.resolve(itemss);
+    }
+    return Promise.resolve([]);
+}
+
 export class CurrentPackProvider implements TreeDataProvider<PackItem> {
     private _onDidChangeTreeData: EventEmitter<PackItem | undefined | void> = new EventEmitter<PackItem | undefined | void>();
     readonly onDidChangeTreeData: Event<PackItem | undefined | void> = this._onDidChangeTreeData.event;
@@ -42,42 +89,7 @@ export class CurrentPackProvider implements TreeDataProvider<PackItem> {
 
 
         if (element) {
-            if (element.type === PackItemType.namespace) { // get functions under namespaces
-                return Promise.resolve([
-                    new PackItem('Functions', TreeItemCollapsibleState.Collapsed, PackItemType.functionRoot, join(element.dir, 'functions'))
-                ]);
-            } else if (element.type === PackItemType.functionRoot) { // get functions with tags or folders under namespaces
-                if (!existsSync(element.dir)) { return Promise.resolve([]); };
-
-                return Promise.resolve(
-                    readdirSync(element.dir).map(r => {
-                        if (UtilFunctions.getExtension(r) === "mcfunction") {
-                            return new PackItem(UtilFunctions.makeNameGrammar(r), TreeItemCollapsibleState.None, PackItemType.function, join(element.dir, r), {
-                                command: 'vscode.open',
-                                title: '',
-                                arguments: [Uri.file(join(element.dir, r))]
-                            });
-                        } else {
-                            return new PackItem(r, TreeItemCollapsibleState.Collapsed, PackItemType.functionFolder, join(element.dir, r));
-                        }
-                    })
-                );
-            } else if (element.type === PackItemType.functionFolder) {
-                return Promise.resolve(
-                    readdirSync(element.dir).map(r => {
-                        if (UtilFunctions.getExtension(r) === "mcfunction") {
-                            return new PackItem(UtilFunctions.makeNameGrammar(r), TreeItemCollapsibleState.None, PackItemType.function, join(element.dir, r), {
-                                command: 'vscode.open',
-                                title: '',
-                                arguments: [Uri.file(join(element.dir, r))]
-                            });
-                        } else {
-                            return new PackItem(r, TreeItemCollapsibleState.Collapsed, PackItemType.functionFolder, join(element.dir, r));
-                        }
-                    })
-                );
-            }
-            return Promise.resolve([]);
+            return getChilds(element);
         };
 
         //get namespaces
@@ -87,7 +99,10 @@ export class CurrentPackProvider implements TreeDataProvider<PackItem> {
     }
 }
 
-export enum PackItemType { namespace = 'namespace', functionRoot = 'functionRoot', functionFolder = 'functionFolder', functionTag = 'functionTag', function = 'function' }
+//definition
+
+export enum PackItemType { namespace = 'namespace', functionRoot = 'functionRoot', functionFolder = 'functionFolder', function = 'function', tagRoot = 'tagRoot', tagFolder = 'tagFolder', tag = 'tag' }
+
 
 function getIconPaths(icon: string) {
     return {
@@ -95,8 +110,6 @@ function getIconPaths(icon: string) {
         dark: join(__filename, '..', '..', 'images', 'icons', 'dark', `${icon}.svg`)
     };
 }
-
-//class definitions
 
 export interface MConfig {
     data: string;
@@ -117,9 +130,11 @@ export class PackItem extends TreeItem {
 
         if (type === PackItemType.namespace) { this.iconPath = getIconPaths('symbol-namespace'); }
         if (type === PackItemType.functionRoot) { this.iconPath = getIconPaths('symbol-constant'); }
-        if (type === PackItemType.functionTag) { this.iconPath = getIconPaths('tag'); }
         if (type === PackItemType.functionFolder) { this.iconPath = ThemeIcon.Folder; }
         if (type === PackItemType.function) { this.iconPath = getIconPaths('symbol-method'); }
+        if (type === PackItemType.tag) { this.iconPath = getIconPaths('tag'); }
+        if (type === PackItemType.tagFolder) { this.iconPath = ThemeIcon.Folder; }
+        if (type === PackItemType.tagRoot) { this.iconPath = getIconPaths('symbol-constant'); }
 
         this.contextValue = type;
     }

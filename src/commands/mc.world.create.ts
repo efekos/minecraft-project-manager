@@ -35,6 +35,7 @@ export default async (provider: WorldsProvider, world: World<Datapack>) => {
         await writeFile(`${dir}\\data\\minecraft\\tags\\functions\\load.json`, JSON.stringify({ values: [`${name}:load`] }, undefined, 2), onErr);//load tags
         await writeFile(`${dir}\\data\\${name}\\functions\\load.mcfunction`, 'say loadworks', onErr);//load function
         await writeFile(`${dir}\\data\\${name}\\functions\\tick.mcfunction`, 'say tickworks', onErr);//tick functipn
+        await writeFile(`${dir}\\mconfig.json`, JSON.stringify({ data: './data' }, undefined, 2), onErr);
 
         // sending a noti
         if (errs.length > 0) {

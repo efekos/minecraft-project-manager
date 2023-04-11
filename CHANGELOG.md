@@ -28,3 +28,12 @@
 * Added command `mc.workspace.function.delete`: Delete a Function
 * Added a clone of vscode symbols to `./images/icons`
 * Changed view name from `Current Pack: Current Pack ` to `MCM: Current Pack`
+
+## 0.0.7
+* Added command `mc.workspace.tag.create`: Create New Tag in Workspace (Hidden in command palette)
+* Added command `mc.workspace.delete`: Delete in Workspace (Hidden in command palette)
+* Added command `mc.workspace.createFolder`: Create folder in workspace (Hidden in command palette)
+* Added **Tags** category to 'MCM: Current Pack' view
+* Changed how 'MCM: Current Pack' view works: Now you need a file called *mconfig.json* in your workspace, and define a data folder in `data` property to see something in 'MCM: Current Pack'. see [mconfig.json](./docs/mconfig.md)
+* Changed functionality of `mc.world.create`: Now it also adds a *mconfig.json* to the workspace
+* Removed command `mc.workspace.function.delete` with reason: Moved to a global command called `mc.workspace.delete`

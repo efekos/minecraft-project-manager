@@ -22,8 +22,7 @@ export class UtilFunctions {
         return filename // Function Name
             .split(' ') // [Function,Name]
             .map(r => r.toLowerCase()) // [function,name]
-            .join('_') // function_name
-            + ".mcfunction"; // function_name.mcfunction
+            .join('_'); // function_name
         //! Works good as long as you don't give a wrong name (FunctionName,fncnm etc.)
     }
 
@@ -36,6 +35,6 @@ export class UtilFunctions {
             notifications.sendErrorMessage('Current mconfig is invalid: given data folder does not exists', 'mconfig.invalid.Data');
             return false;
         }
-        return true
+        return true;
     }
 }

@@ -89,18 +89,34 @@
       {
         "command": "mc.workspace.function.create",
         "title": "Create New Function in Workspace",
-        "icon":"$(plus)",
+        "icon":"$(new-file)",
         "category": "MCM",
         "enablement": "true",
         "shortTitle": "Create new Function"
       },
       {
-        "command": "mc.workspace.function.delete",
-        "title": "Delete a Function in Workspace",
+        "command": "mc.workspace.tag.create",
+        "title": "Create New Tag in Workspace",
+        "icon":"$(new-file)",
+        "category": "MCM",
+        "enablement": "true",
+        "shortTitle": "Create new Tag"
+      },
+      {
+        "command": "mc.workspace.delete",
+        "title": "Delete in Workspace",
         "icon":"$(trash)",
         "category": "MCM",
         "enablement": "true",
-        "shortTitle": "Delete a Function"
+        "shortTitle": "Delete"
+      },
+      {
+        "command": "mc.workspace.createFolder",
+        "title": "Create a Folder in Workspace",
+        "icon":"$(new-folder)",
+        "category": "MCM",
+        "enablement": "true",
+        "shortTitle": "Create a Folder"
       }
     ],
     "viewsContainers": {
@@ -139,7 +155,15 @@
           "when": "false"
         },
         {
-          "command": "mc.workspace.function.delete",
+          "command": "mc.workspace.tag.create",
+          "when": "false"
+        },
+        {
+          "command": "mc.workspace.delete",
+          "when": "false"
+        },
+        {
+          "command": "mc.workspace.createFolder",
           "when": "false"
         }
       ],
@@ -172,8 +196,18 @@
           "group": "inline"
         },
         {
-          "when": "view==workspace && viewItem==function",
-          "command": "mc.workspace.function.delete",
+          "when": "view== workspace && (viewItem == tagRoot || viewItem == tagFolder)",
+          "command": "mc.workspace.tag.create",
+          "group": "inline"
+        },
+        {
+          "when": "view == workspace && (viewItem == tagRoot || viewItem == functionRoot || viewItem == functionFolder || viewItem == tagFolder)",
+          "command": "mc.workspace.createFolder",
+          "group": "inline"
+        },
+        {
+          "when": "view == workspace && (viewItem == functionFolder || viewItem == tagFolder||viewItem == tag||viewItem == function)",
+          "command": "mc.workspace.delete",
           "group": "inline"
         }
       ]
