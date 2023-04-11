@@ -27,7 +27,6 @@
 * Added command `mc.workspace.function.create`: Create New Function
 * Added command `mc.workspace.function.delete`: Delete a Function
 * Added a clone of vscode symbols to `./images/icons`
-* Changed view name from `Current Pack: Current Pack ` to `MCM: Current Pack`
 
 ## 0.0.7
 * Added command `mc.workspace.tag.create`: Create New Tag in Workspace (Hidden in command palette)
@@ -41,8 +40,8 @@
 ## 0.0.8
 * Added command `mc.workspace.createRecipe`: Create New Recipe in Workspace (Hidden in command palette)
 * Added command `mc.workspace.createLootTable`: Craete New Loot Table in Workspace (Hidden in command palette)
-* Added *Recipes* to namespaces in 'MCM: Current Pack' 
-* Added *Structures* to namespaces in 'MCM: Current Pack' 
-* Added *Loot Tables* to namespaces in 'MCM: Current Pack' 
+* Added **Recipes** category to 'MCM: Current Pack' 
+* Added **Structures** category to 'MCM: Current Pack' 
+* Added **Loot Tables** category to 'MCM: Current Pack' 
 * Renamed command `mc.workspace.function.create` to `mc.workspace.createFunction`
 * Renamed command `mc.workspace.tag.create` to `mc.workspace.createTag`
