@@ -87,7 +87,7 @@
         "enablement": "true"
       },
       {
-        "command": "mc.workspace.function.create",
+        "command": "mc.workspace.createFunction",
         "title": "Create New Function in Workspace",
         "icon":"$(new-file)",
         "category": "MCM",
@@ -95,7 +95,7 @@
         "shortTitle": "Create new Function"
       },
       {
-        "command": "mc.workspace.tag.create",
+        "command": "mc.workspace.createTag",
         "title": "Create New Tag in Workspace",
         "icon":"$(new-file)",
         "category": "MCM",
@@ -117,6 +117,22 @@
         "category": "MCM",
         "enablement": "true",
         "shortTitle": "Create a Folder"
+      },
+      {
+        "command": "mc.workspace.createRecipe",
+        "title": "Create a Recipe in Workspace",
+        "icon":"$(new-file)",
+        "category": "MCM",
+        "enablement": "true",
+        "shortTitle": "Create a Recipe"
+      },
+      {
+        "command": "mc.workspace.createLootTable",
+        "title": "Create a Loot Table in Workspace",
+        "icon":"$(new-file)",
+        "category": "MCM",
+        "enablement": "true",
+        "shortTitle": "Create a Loot Table"
       }
     ],
     "viewsContainers": {
@@ -151,11 +167,11 @@
           "when": "false"
         },
         {
-          "command": "mc.workspace.function.create",
+          "command": "mc.workspace.createFunction",
           "when": "false"
         },
         {
-          "command": "mc.workspace.tag.create",
+          "command": "mc.workspace.createTag",
           "when": "false"
         },
         {
@@ -164,6 +180,14 @@
         },
         {
           "command": "mc.workspace.createFolder",
+          "when": "false"
+        },
+        {
+          "command": "mc.workspace.createRecipe",
+          "when": "false"
+        },
+        {
+          "command": "mc.workspace.createLootTable",
           "when": "false"
         }
       ],
@@ -192,22 +216,32 @@
         },
         {
           "when": "view== workspace && (viewItem == functionRoot || viewItem == functionFolder)",
-          "command": "mc.workspace.function.create",
+          "command": "mc.workspace.createFunction",
           "group": "inline"
         },
         {
           "when": "view== workspace && (viewItem == tagRoot || viewItem == tagFolder)",
-          "command": "mc.workspace.tag.create",
+          "command": "mc.workspace.createTag",
           "group": "inline"
         },
         {
-          "when": "view == workspace && (viewItem == tagRoot || viewItem == functionRoot || viewItem == functionFolder || viewItem == tagFolder)",
+          "when": "view == workspace && (viewItem == tagRoot || viewItem == functionRoot || viewItem == functionFolder || viewItem == tagFolder||viewItem==recipeRoot||viewItem==recipeFolder||viewItem==structureRoot||viewItem==structureFolder||viewItem==lootTableRoot||viewItem==lootTableFolder)",
           "command": "mc.workspace.createFolder",
           "group": "inline"
         },
         {
-          "when": "view == workspace && (viewItem == functionFolder || viewItem == tagFolder||viewItem == tag||viewItem == function)",
+          "when": "view == workspace && (viewItem == functionFolder || viewItem == tagFolder||viewItem == tag||viewItem == function||viewItem == structure||viewItem == lootTable||viewItem==recipe||viewItem==recipeFolder||viewItem==recipe||viewItem==structureFolder||viewItem==structure||viewItem==lootTableFolder||viewItem==lootTable)",
           "command": "mc.workspace.delete",
+          "group": "inline"
+        },
+        {
+          "command": "mc.workspace.createRecipe",
+          "when": "view == workspace && (viewItem == recipeFolder||viewItem == recipeRoot)",
+          "group": "inline"
+        },
+        {
+          "command": "mc.workspace.createLootTable",
+          "when": "view == workspace && (viewItem == lootTableFolder||viewItem == lootTableRoot)",
           "group": "inline"
         }
       ]

@@ -37,3 +37,12 @@
 * Changed how 'MCM: Current Pack' view works: Now you need a file called *mconfig.json* in your workspace, and define a data folder in `data` property to see something in 'MCM: Current Pack'. see [mconfig.json](./docs/mconfig.md)
 * Changed functionality of `mc.world.create`: Now it also adds a *mconfig.json* to the workspace
 * Removed command `mc.workspace.function.delete` with reason: Moved to a global command called `mc.workspace.delete`
+
+## 0.0.8
+* Added command `mc.workspace.createRecipe`: Create New Recipe in Workspace (Hidden in command palette)
+* Added command `mc.workspace.createLootTable`: Craete New Loot Table in Workspace (Hidden in command palette)
+* Added *Recipes* to namespaces in 'MCM: Current Pack' 
+* Added *Structures* to namespaces in 'MCM: Current Pack' 
+* Added *Loot Tables* to namespaces in 'MCM: Current Pack' 
+* Renamed command `mc.workspace.function.create` to `mc.workspace.createFunction`
+* Renamed command `mc.workspace.tag.create` to `mc.workspace.createTag`

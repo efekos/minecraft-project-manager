@@ -14,6 +14,7 @@ export class UtilFunctions {
             .map(r => r[0].toUpperCase() + r.slice(1)) // [Function,Name.mcfunction]
             .join(' ') // Function Name.mcfunction
             .replace('.json', '')
+            .replace('.nbt', '')
             .replace('.mcfunction', ''); // Function Name 😎
         //! Works good as long as you don't name your functions wrong (functionname,fncname etc.)
     }
