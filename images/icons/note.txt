@@ -1,2 +1,5 @@
-every icon here is cloned from this repository
+every icon that is not listed below is from microsoft/vscode-icons on github
 https://github.com/microsoft/vscode-icons
+* symbol-import | combined arrow-down and parts of symbol-array
+* symbol-export | combined arrow-down and parts of symbol-array
+* symbol-world | modified symbol-method

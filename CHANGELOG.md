@@ -45,3 +45,9 @@
 * Added **Loot Tables** category to 'MCM: Current Pack' 
 * Renamed command `mc.workspace.function.create` to `mc.workspace.createFunction`
 * Renamed command `mc.workspace.tag.create` to `mc.workspace.createTag`
+
+## 0.0.8_1
+* Added 2 icons: symbol-import,symbol-export
+* Added command `mc.workspace.importStructure`: Import a Structure to Workspace (Hidden in command palette) (Still in progress)
+* Changed directory of custom icons
+* Changed some of the icons

@@ -8,6 +8,13 @@ export class UtilFunctions {
         return filename.split(".").pop();
     }
 
+    public static getIconPaths(icon: string) {
+        return {
+            light: join(__filename, '..', '..', 'images', 'icons', 'light', `${icon}.svg`),
+            dark: join(__filename, '..', '..', 'images', 'icons', 'dark', `${icon}.svg`)
+        };
+    }
+
     public static makeNameGrammar(filename: string) {
         return filename // function_name.mcfunction ☹️
             .split("_") // [function,name.mcfunction]

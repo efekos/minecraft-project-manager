@@ -161,14 +161,6 @@ export enum PackItemType {
     recipeRoot = 'recipeRoot', recipeFolder = 'recipeFolder', recipe = 'recipe', lootTableRoot = 'lootTableRoot', lootTableFolder = 'lootTableFolder', lootTable = 'lootTable'
 }
 
-
-function getIconPaths(icon: string) {
-    return {
-        light: join(__filename, '..', '..', 'images', 'icons', 'light', `${icon}.svg`),
-        dark: join(__filename, '..', '..', 'images', 'icons', 'dark', `${icon}.svg`)
-    };
-}
-
 export interface MConfig {
     data: string;
 }
@@ -186,22 +178,22 @@ export class PackItem extends TreeItem {
         this.tooltip = dir;
         this.description = type;
 
-        if (type === PackItemType.namespace) { this.iconPath = getIconPaths('symbol-namespace'); }
-        if (type === PackItemType.functionRoot) { this.iconPath = getIconPaths('symbol-constant'); }
+        if (type === PackItemType.namespace) { this.iconPath = UtilFunctions.getIconPaths('symbol-namespace'); }
+        if (type === PackItemType.functionRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-constant'); }
         if (type === PackItemType.functionFolder) { this.iconPath = ThemeIcon.Folder; }
-        if (type === PackItemType.function) { this.iconPath = getIconPaths('symbol-method'); }
-        if (type === PackItemType.tag) { this.iconPath = getIconPaths('tag'); }
+        if (type === PackItemType.function) { this.iconPath = UtilFunctions.getIconPaths('symbol-method'); }
+        if (type === PackItemType.tag) { this.iconPath = UtilFunctions.getIconPaths('tag'); }
         if (type === PackItemType.tagFolder) { this.iconPath = ThemeIcon.Folder; }
-        if (type === PackItemType.tagRoot) { this.iconPath = getIconPaths('symbol-constant'); }
-        if (type === PackItemType.structureRoot) { this.iconPath = getIconPaths('symbol-constant'); }
+        if (type === PackItemType.tagRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-constant'); }
+        if (type === PackItemType.structureRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-constant'); }
         if (type === PackItemType.structureFolder) { this.iconPath = ThemeIcon.Folder; }
-        if (type === PackItemType.structure) { this.iconPath = getIconPaths('symbol-field'); }
-        if (type === PackItemType.recipeRoot) { this.iconPath = getIconPaths('symbol-constant'); }
+        if (type === PackItemType.structure) { this.iconPath = UtilFunctions.getIconPaths('symbol-field'); }
+        if (type === PackItemType.recipeRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-constant'); }
         if (type === PackItemType.recipeFolder) { this.iconPath = ThemeIcon.Folder; }
-        if (type === PackItemType.recipe) { this.iconPath = getIconPaths('symbol-numeric'); }
-        if (type === PackItemType.lootTableRoot) { this.iconPath = getIconPaths('symbol-constant'); }
+        if (type === PackItemType.recipe) { this.iconPath = UtilFunctions.getIconPaths('symbol-numeric'); }
+        if (type === PackItemType.lootTableRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-constant'); }
         if (type === PackItemType.lootTableFolder) { this.iconPath = ThemeIcon.Folder; }
-        if (type === PackItemType.lootTable) { this.iconPath = getIconPaths('symbol-structure'); }
+        if (type === PackItemType.lootTable) { this.iconPath = UtilFunctions.getIconPaths('symbol-structure'); }
 
         this.contextValue = type;
     }

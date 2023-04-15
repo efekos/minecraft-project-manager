@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import { Command, Event, EventEmitter, ThemeIcon, TreeDataProvider, TreeItem, TreeItemCollapsibleState, TreeItemLabel, Uri } from "vscode";
+import { UtilFunctions } from "./UtilFunctions";
 
 // type to trick data provider that im using one type
 export type Items<T> = World<T> | T;
@@ -137,10 +138,7 @@ export class World<T> extends TreeItem {
         this.description = `(${data.currentItems.length})`;
     }
 
-    iconPath = {
-        dark: join(__filename, '..', '..', 'images', 'mc-world-light.svg'),
-        light: join(__filename, '..', '..', 'images', 'mc-world-dark.svg')
-    };
+    iconPath = UtilFunctions.getIconPaths('symbol-world');
 
     contextValue = 'world';
 }

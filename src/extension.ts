@@ -7,13 +7,14 @@ import mcDatapackDelete from './commands/mc.datapack.delete';
 import mcOpen from './commands/mc.open';
 import { CurrentPackProvider, PackItem } from './class/CurrentPackProvider';
 import mcWorkspaceRefresh from './commands/mc.workspace.refresh';
-import mcWorkspaceFunctionCreate from './commands/mc.workspace.createTag';
 import { join } from 'path';
-import mcWorkspaceTagCreate from './commands/mc.workspace.createTag';
 import mcWorkspaceCreateFolder from './commands/mc.workspace.createFolder';
 import mcWorkspaceDelete from './commands/mc.workspace.delete';
 import mcWorkspaceCreateRecipe from './commands/mc.workspace.createRecipe';
 import mcWorkspaceCreateLootTable from './commands/mc.workspace.createLootTable';
+import mcWorkspaceImportStructure from './commands/mc.workspace.importStructure';
+import mcWorkspaceCreateFunction from './commands/mc.workspace.createFunction';
+import mcWorkspaceCreateTag from './commands/mc.workspace.createTag';
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -48,12 +49,13 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerCommand('mc.datapack.delete', async (pack: Datapack) => mcDatapackDelete(provider, pack)),
 		vscode.commands.registerCommand('mc.open', (dir: string) => mcOpen(dir)),
 		vscode.commands.registerCommand('mc.workspace.refresh', () => mcWorkspaceRefresh(cprovider)),
-		vscode.commands.registerCommand('mc.workspace.createFunction', (root: PackItem) => mcWorkspaceFunctionCreate(cprovider, root)),
-		vscode.commands.registerCommand('mc.workspace.createTag', (tag: PackItem) => mcWorkspaceTagCreate(cprovider, tag)),
+		vscode.commands.registerCommand('mc.workspace.createFunction', (root: PackItem) => mcWorkspaceCreateFunction(cprovider, root)),
+		vscode.commands.registerCommand('mc.workspace.createTag', (tag: PackItem) => mcWorkspaceCreateTag(cprovider, tag)),
 		vscode.commands.registerCommand('mc.workspace.delete', (tag: PackItem) => mcWorkspaceDelete(cprovider, tag)),
 		vscode.commands.registerCommand('mc.workspace.createFolder', (tag: PackItem) => mcWorkspaceCreateFolder(cprovider, tag)),
 		vscode.commands.registerCommand('mc.workspace.createRecipe', (tag: PackItem) => mcWorkspaceCreateRecipe(cprovider, tag)),
 		vscode.commands.registerCommand('mc.workspace.createLootTable', (tag: PackItem) => mcWorkspaceCreateLootTable(cprovider, tag)),
+		vscode.commands.registerCommand('mc.workspace.importStructure', (tag: PackItem) => mcWorkspaceImportStructure(cprovider, tag)),
 	);
 }
 

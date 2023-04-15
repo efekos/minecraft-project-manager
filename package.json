@@ -2,7 +2,7 @@
   "name": "minecraft-project-manager",
   "displayName": "Minecraft Project Manager",
   "description": "Project Manager For Minecraft Datapacks",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "engines": {
     "vscode": "^1.77.0"
   },
@@ -116,7 +116,7 @@
         "icon":"$(new-folder)",
         "category": "MCM",
         "enablement": "true",
-        "shortTitle": "Create a Folder"
+        "shortTitle": "Create Folder"
       },
       {
         "command": "mc.workspace.createRecipe",
@@ -124,7 +124,7 @@
         "icon":"$(new-file)",
         "category": "MCM",
         "enablement": "true",
-        "shortTitle": "Create a Recipe"
+        "shortTitle": "Create Recipe"
       },
       {
         "command": "mc.workspace.createLootTable",
@@ -132,7 +132,29 @@
         "icon":"$(new-file)",
         "category": "MCM",
         "enablement": "true",
-        "shortTitle": "Create a Loot Table"
+        "shortTitle": "Create Loot Table"
+      },
+      {
+        "command": "mc.workspace.importStructure",
+        "title": "Import a Structure to Workspace",
+        "icon":{
+          "dark": "/images/icons/dark/symbol-import.svg",
+          "light": "/images/icons/light/symbol-import.svg"
+        },
+        "category": "MCM",
+        "enablement": "true",
+        "shortTitle": "Import Structure"
+      },
+      {
+        "command": "mc.workspace.exportStructure",
+        "title": "Export a Structure from Workspace",
+        "icon":{
+          "dark": "/images/icons/dark/symbol-export.svg",
+          "light": "/images/icons/light/symbol-export.svg"
+        },
+        "category": "MCM",
+        "enablement": "true",
+        "shortTitle": "Export Structure"
       }
     ],
     "viewsContainers": {
@@ -189,6 +211,14 @@
         {
           "command": "mc.workspace.createLootTable",
           "when": "false"
+        },
+        {
+          "command": "mc.workspace.importStructure",
+          "when": "false"
+        },
+        {
+          "command": "mc.workspace.exportStructure",
+          "when": "false"
         }
       ],
       "view/title": [
@@ -242,6 +272,16 @@
         {
           "command": "mc.workspace.createLootTable",
           "when": "view == workspace && (viewItem == lootTableFolder||viewItem == lootTableRoot)",
+          "group": "inline"
+        },
+        {
+          "command": "mc.workspace.importStructure",
+          "when": "view == workspace && (viewItem == structureRoot || viewItem == structureFolder)",
+          "group": "inline"
+        },
+        {
+          "command": "mc.workspace.exportStructure",
+          "when": "view == workspace && viewItem == structure",
           "group": "inline"
         }
       ]
