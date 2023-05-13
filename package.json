@@ -319,6 +319,12 @@
         "when": "view==workspace",
         "contents": "There is no `mcmconfig.json` file found in the current workspace.\n[Create One](command:mc.refresh)"
       }
+    ],
+    "jsonValidation": [
+      {
+        "fileMatch": "mconfig.json",
+        "url": "url"
+      }
     ]
   },
   "scripts": {

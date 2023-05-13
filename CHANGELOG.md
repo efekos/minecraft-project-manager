@@ -49,5 +49,6 @@
 ## 0.0.8_1
 * Added 2 icons: symbol-import,symbol-export
 * Added command `mc.workspace.importStructure`: Import a Structure to Workspace (Hidden in command palette) (Still in progress)
+* Added JSON Validation to `mconfig.json` files
 * Changed directory of custom icons
 * Changed some of the icons
