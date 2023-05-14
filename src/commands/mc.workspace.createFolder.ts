@@ -11,6 +11,5 @@ export default async (provider: CurrentPackProvider, func: PackItem) => {
     const dir = join(func.dir, UtilFunctions.revertGrammaredName(name));
 
     await mkdirSync(dir,{recursive:true});
-    commands.executeCommand('vscode.open', Uri.file(dir));
     provider.refresh();
 };

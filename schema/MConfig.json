@@ -3,7 +3,9 @@
     "type":"object",
     "properties": {
         "data":{
-            "type":"string"
+            "type":"string",
+            "default":"./data",
+            "description": "\"<workspace_directory>\\<this_property>\" should be the main data foldere for this workspace. Workspace manager will use this directory to reach your minecraft datapack data"
         }
     },
     "required": ["data"]

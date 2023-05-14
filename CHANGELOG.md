@@ -52,3 +52,14 @@
 * Added JSON Validation to `mconfig.json` files
 * Changed directory of custom icons
 * Changed some of the icons
+
+# 1.0
+
+## 1.0.0
+* First public release of MCM ever.
+* Added importing structures from the world's minecraft namespace to any datapack & any folder.
+* Removed command `mc.workspace.exportStructure`: unused command for now.
+* Fixed typo in docs/MConfig: "feature" to "future"
+* Fixed being able to open .nbt files via 'MCM: Current Pack'
+* Fixed datapack versions not being the real version according to the Minecraft Wiki
+* Fixed trying to open a folder in text editor when adding it via 'MCM: Current Pack' 

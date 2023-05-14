@@ -1,4 +1,4 @@
-import { existsSync } from "fs";
+import { existsSync, lstat, readdirSync, stat } from "fs";
 import { MConfig } from "./CurrentPackProvider";
 import { notifications } from "./NotificationProvider";
 import { join } from "path";
@@ -44,5 +44,37 @@ export class UtilFunctions {
             return false;
         }
         return true;
+    }
+
+    public static isAfolder(dir: string): boolean {
+        if (!existsSync(dir)) { return false; };
+        stat(dir, (e, s) => {
+            return s.isDirectory();
+        });
+
+        return false;
+    }
+    public static isAfile(dir: string) {
+        return existsSync(dir) && stat(dir, (e, s) => s.isFile());
+    }
+
+    public static getFiles(dir: string, extension: string): string[] {
+        const finalPaths: string[] = [];
+
+        function a(dirr: string) {
+            readdirSync(dirr).forEach(file => {
+                const newDir = join(dirr, file);
+
+                if(file.endsWith(".nbt")){
+                    finalPaths.push(newDir);
+                } else {
+                    a(newDir);
+                }
+            });
+
+        }
+
+        a(dir);
+        return finalPaths.map(r=>r.replace(dir,"").slice(1));
     }
 }

@@ -56,11 +56,7 @@ function getChilds(element: PackItem): Thenable<PackItem[]> {
 
             const itens = readdirSync(element.dir).map(r => {
                 if (UtilFunctions.getExtension(r) === "nbt") {
-                    return new PackItem(UtilFunctions.makeNameGrammar(r), TreeItemCollapsibleState.None, PackItemType.structure, join(element.dir, r), {
-                        command: 'vscode.open',
-                        title: '',
-                        arguments: [Uri.file(join(element.dir, r))]
-                    });
+                    return new PackItem(UtilFunctions.makeNameGrammar(r), TreeItemCollapsibleState.None, PackItemType.structure, join(element.dir, r));
                 } else {
                     return new PackItem(UtilFunctions.makeNameGrammar(r), TreeItemCollapsibleState.Collapsed, PackItemType.structureFolder, join(element.dir, r));
                 }
@@ -174,9 +170,6 @@ export class PackItem extends TreeItem {
         public readonly command?: Command
     ) {
         super(label, collapsibleState);
-
-        this.tooltip = dir;
-        this.description = type;
 
         if (type === PackItemType.namespace) { this.iconPath = UtilFunctions.getIconPaths('symbol-namespace'); }
         if (type === PackItemType.functionRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-constant'); }

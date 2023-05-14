@@ -144,17 +144,6 @@
         "category": "MCM",
         "enablement": "true",
         "shortTitle": "Import Structure"
-      },
-      {
-        "command": "mc.workspace.exportStructure",
-        "title": "Export a Structure from Workspace",
-        "icon":{
-          "dark": "/images/icons/dark/symbol-export.svg",
-          "light": "/images/icons/light/symbol-export.svg"
-        },
-        "category": "MCM",
-        "enablement": "true",
-        "shortTitle": "Export Structure"
       }
     ],
     "viewsContainers": {
@@ -215,10 +204,6 @@
         {
           "command": "mc.workspace.importStructure",
           "when": "false"
-        },
-        {
-          "command": "mc.workspace.exportStructure",
-          "when": "false"
         }
       ],
       "view/title": [
@@ -278,11 +263,6 @@
           "command": "mc.workspace.importStructure",
           "when": "view == workspace && (viewItem == structureRoot || viewItem == structureFolder)",
           "group": "inline"
-        },
-        {
-          "command": "mc.workspace.exportStructure",
-          "when": "view == workspace && viewItem == structure",
-          "group": "inline"
         }
       ]
     },
@@ -323,7 +303,7 @@
     "jsonValidation": [
       {
         "fileMatch": "mconfig.json",
-        "url": "url"
+        "url": "https://raw.githubusercontent.com/efe124/minecraft-project-manager/main/schema/MConfig.json"
       }
     ]
   },
