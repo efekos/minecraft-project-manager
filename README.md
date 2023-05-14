@@ -11,11 +11,11 @@ This extension will help you managing your Minecraft datapacks and switch betwee
 * Create datapacks or delete existing datapacks easily!
 * Easily switch the workspace between datapacks!
 
-![Showcase](./images/showcase.gif)
+![Showcase](https://raw.githubusercontent.com/efe124/minecraft-project-manager/main/images/showcase.gif)
 
 * Use the *Current Pack* view to generate everything easier!
 
-![Current Pack Showcase](images/currentpack.png)
+![Current Pack Showcase](https://raw.githubusercontent.com/efe124/minecraft-project-manager/main/images/currentpack.png)
 
 ## Configuration
 
