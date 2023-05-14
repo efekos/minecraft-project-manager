@@ -13,6 +13,10 @@ This extension will help you managing your Minecraft datapacks and switch betwee
 
 ![Showcase](./images/showcase.gif)
 
+* Use the *Current Pack* view to generate everything easier!
+
+![Current Pack Showcase](images/currentpack.png)
+
 ## Configuration
 
 This extension contributes the following settings:
@@ -24,7 +28,6 @@ This extension contributes the following settings:
 There is no known issues yet.
 
 ## Release Notes
----
 
 ### 1.0.0
 
