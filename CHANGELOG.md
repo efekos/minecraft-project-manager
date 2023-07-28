@@ -63,3 +63,6 @@
 * Fixed being able to open .nbt files via 'MCM: Current Pack'
 * Fixed datapack versions not being the real version according to the Minecraft Wiki
 * Fixed trying to open a folder in text editor when adding it via 'MCM: Current Pack' 
+
+## 1.0.1
+* Changed pack formats coming from `WorldsProvider#getVersionFromFormat` to match with new pack formats, including Minecraft 1.20.
