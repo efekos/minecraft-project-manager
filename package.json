@@ -9,7 +9,7 @@
   "icon": "images/extensionIcon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/efe124/minecraft-project-manager"
+    "url": "https://github.com/efekos/minecraft-project-manager"
   },
   "keywords": [
     "minecraft",
@@ -19,7 +19,12 @@
     "project"
   ],
   "sponsor": {
-    "url": "https://patreon.com/user?u=87165918"
+    "url": "https://www.buymeacoffee.com/efekos"
+  },
+  "author": {
+    "name": "efekos",
+    "url": "https://github.com/efekos",
+    "email": "hefeolgun10@gmail.com"
   },
   "publisher": "efekos",
   "license": "ISC",
