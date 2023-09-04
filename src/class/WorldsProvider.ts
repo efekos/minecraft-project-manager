@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, readdirSync } from "fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import { Command, Event, EventEmitter, ThemeIcon, TreeDataProvider, TreeItem, TreeItemCollapsibleState, TreeItemLabel, Uri } from "vscode";
 import { UtilFunctions } from "./UtilFunctions";
@@ -29,7 +29,7 @@ export class WorldsProvider implements TreeDataProvider<Items<Datapack>> {
     /**
      * Gets mc version from a format
      * @param format pack format
-     * @returns mc version of what format means, gets - and + if its not between 1.14-1.19
+     * @returns mc version of what format means, gets - and + if its not between 1.14-1.20
      * @since 1.0.1
      */
     getVersionFromFormat(format: number): string {
@@ -58,6 +58,7 @@ export class WorldsProvider implements TreeDataProvider<Items<Datapack>> {
      */
     getDatapacks(directory: string): Datapack[] {
         const result: Datapack[] = [];
+        if(!existsSync(directory)) {mkdirSync(directory);}
         readdirSync(directory).forEach(packFolder => {
             const mcmetaDir = join(directory, packFolder, 'pack.mcmeta');
             if (!existsSync(mcmetaDir)) { return; }
