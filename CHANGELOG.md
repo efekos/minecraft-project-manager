@@ -66,3 +66,6 @@
 
 ## 1.0.1
 * Changed pack formats coming from `WorldsProvider#getVersionFromFormat` to match with new pack formats, including Minecraft 1.20.
+
+## 1.0.2
+* Fix an ENOENT error causing when there is no 'datapacks' folder inside a world. ([#1](https://github.com/efekos/minecraft-project-manager/issues/1))
