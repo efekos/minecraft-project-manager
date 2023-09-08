@@ -33,4 +33,8 @@ There is no known issues yet.
 
 Initial release.
 
+### 1.0.1
+
+* Prevent 'datapacks' folder from unexstising
+
 **Enjoy!**
