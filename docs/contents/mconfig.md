@@ -6,4 +6,4 @@ MConfig, aka `mconfig.json` is a config file about MCM in that workspace. Curren
 
 |Property|Description|Type|Default Value
 |-|-|-|-|
-|data|The [data folder](https://minecraft.fandom.com/wiki/Data_pack#data) of current datapack.|string|"./data" 
+|data|The [data folder](https://minecraft.wiki/Data_pack#data) of current datapack.|string|"./data" 
