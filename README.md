@@ -29,12 +29,10 @@ There is no known issues yet.
 
 ## Release Notes
 
+> This section only updates for major and minor version changes. For more deailed and patch included release notes, see [changelog](./CHANGELOG.md).
+
 ### 1.0.0
 
 Initial release.
-
-### 1.0.1
-
-* Prevent 'datapacks' folder from unexstising
 
 **Enjoy!**
