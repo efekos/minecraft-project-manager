@@ -68,4 +68,8 @@
 * Changed pack formats coming from `WorldsProvider#getVersionFromFormat` to match with new pack formats, including Minecraft 1.20.
 
 ## 1.0.2
-* Fix an ENOENT error causing when there is no 'datapacks' folder inside a world. ([#1](https://github.com/efekos/minecraft-project-manager/issues/1))
+* Fixed an ENOENT error causing when there is no 'datapacks' folder inside a world. ([#1](https://github.com/efekos/minecraft-project-manager/issues/1))
+
+# 1.0.3
+* Changed functionality of `mc.workspace.importStructure`: Now you can import structures from other namespaces, not just `minecraft`.
+* Updated pack formats of `WorldsProvider.getVersionFromFormat(string)`.
