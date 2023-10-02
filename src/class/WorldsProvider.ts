@@ -29,24 +29,27 @@ export class WorldsProvider implements TreeDataProvider<Items<Datapack>> {
     /**
      * Gets mc version from a format
      * @param format pack format
-     * @returns mc version of what format means, gets - and + if its not between 1.14-1.20
+     * @returns mc version of what format means, gets - and + if its not between 1.14-1.20.2
      * @since 1.0.1
      */
     getVersionFromFormat(format: number): string {
         if (format < 4) { return "1.14-"; };
-        if (format === 4) { return "1.14"; };
-        if (format === 5) { return "1.15"; };
-        if (format === 6) { return "1.16"; };
-        if (format === 7) { return "1.17"; };
-        if (format === 8) { return "1.18"; };
-        if (format === 9) { return "1.18.2"; };
-        if (format === 10) { return "1.19"; };
-        if (format === 11) { return "23w04a"; };
-        if (format === 12) { return "1.19.4"; };
-        if (format === 13) { return "23w13a"; };
-        if (format === 14) { return "23w16a"; };
-        if (format === 15) { return "1.20"; };
-        if (format > 15) { return "1.20.1+"; };
+        if (format == 4) { return "1.14"; };
+        if (format == 5) { return "1.15"; };
+        if (format == 6) { return "1.16"; };
+        if (format == 7) { return "1.17"; };
+        if (format == 8) { return "1.18"; };
+        if (format == 9) { return "1.18.2"; };
+        if (format == 10) { return "1.19"; };
+        if (format == 11) { return "23w04a"; };
+        if (format == 12) { return "1.19.4"; };
+        if (format == 13) { return "23w13a"; };
+        if (format == 14) { return "23w16a"; };
+        if (format >= 15) { return "1.20"; };
+        if (format == 16) { return "23w31a"; };
+        if (format == 17) { return "23w32a"; };
+        if (format == 18) { return "1.20.2"; };
+        if (format > 18) { return "1.20.2+"; };
         return "?";
     }
 
