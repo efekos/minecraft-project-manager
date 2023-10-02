@@ -8,25 +8,29 @@ import { UtilFunctions } from "../class/UtilFunctions";
 
 
 async function impotyWorld(cprovider: CurrentPackProvider, item: PackItem, rootpath: string) {
-    const dir = join(rootpath, '..', '..', 'generated', 'minecraft', 'structures');
-    const items = await window.showQuickPick(UtilFunctions.getFiles(dir, "nbt").map(r => { return { label: r }; }), { canPickMany: true, title: 'Choose structures to import' });
+    const dir = join(rootpath, '..', '..', 'generated');
+    if (!existsSync(dir)) mkdirSync(dir);
+    const items = await window.showQuickPick(UtilFunctions.getFiles(dir, "nbt").map(r => { return { label: r.replace("\\structures\\", ":") }; }), { canPickMany: true, title: 'Choose structures to import' });
 
     if (items?.length === 0) { return; }
     assert(items);
     const errs: NodeJS.ErrnoException[] = [];
     try {
-        items.forEach(async ite => {
-            const sdkfng = join(dir, ite.label);
-            const targetDir = join(item.dir,ite.label);
-
+        items.map(item => { item.label = item.label.replace(":", "\\structures\\"); return item; }).forEach(async ite => {
+            const actualPath = join(dir, ite.label);
+           
             if (!existsSync(item.dir)) { mkdir(item.dir, { recursive: true }, (e) => { }); };
 
-            
-            const asdfk = targetDir.split("\\");
-            asdfk.pop();
-            if(!existsSync(asdfk.join("\\"))) {mkdirSync(asdfk.join("\\"),{recursive:true});}
+            const copyDir = ite.label.split("\\");
+            copyDir.shift(); copyDir.shift(); // removing '<packName>' and 'structures' from the path.
 
-            await copyFile(sdkfng, join(item.dir, ite.label), (e) => {
+
+            const copyPath = join(item.dir, copyDir.join("\\"));
+            const somethin = copyPath.split("\\");
+            somethin.pop();
+            if (!existsSync(somethin.join("\\"))) mkdirSync(somethin.join("\\"), { recursive: true });
+
+            await copyFile(actualPath, join(item.dir, copyDir.join("\\")), (e) => {
                 if (e) {
                     notifications.sendErrorMessage("An unknown error occoured:" + e.message, "workspace.import.ErrorUnknown");
                 }
