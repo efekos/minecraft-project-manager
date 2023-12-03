@@ -1,4 +1,4 @@
 # MCM Wiki
 
 Current Contents:
-* https://github.com/efe124/minecraft-project-manager/wiki/MConfig
+* https://github.com/efekos/minecraft-project-manager/wiki/MConfig
