@@ -2,7 +2,7 @@
   "name": "minecraft-project-manager",
   "displayName": "Minecraft Project Manager",
   "description": "Project Manager For Minecraft Datapacks",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "engines": {
     "vscode": "^1.77.0"
   },
@@ -45,7 +45,7 @@
             "type":"number",
             "title": "Default Pack Format",
             "markdownDescription": "Default pack format while generating a new datapack. [learn more about pack formats](https://minecraft.fandom.com/wiki/Pack_format)",
-            "default":9
+            "default":28
           },
           "minecraftProjectManager.worlds.defaultPackDescription":{
             "type":"string",
