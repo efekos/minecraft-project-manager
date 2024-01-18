@@ -29,7 +29,7 @@ There is no known issues yet.
 
 ## Release Notes
 
-> This section only updates for major and minor version changes. For more deailed and patch included release notes, see [changelog](./CHANGELOG.md).
+> This section only updates for major and minor version changes. For more detailed and patch included release notes, see [changelog](./CHANGELOG.md).
 
 ### 1.0.0
 
