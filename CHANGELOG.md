@@ -70,6 +70,10 @@
 ## 1.0.2
 * Fixed an ENOENT error causing when there is no 'datapacks' folder inside a world. ([#1](https://github.com/efekos/minecraft-project-manager/issues/1))
 
-# 1.0.3
+## 1.0.3
 * Changed functionality of `mc.workspace.importStructure`: Now you can import structures from other namespaces, not just `minecraft`.
 * Updated pack formats of `WorldsProvider.getVersionFromFormat(string)`.
+
+## 1.0.4
+
+* Updated datapack versions of `WorldsProvider.getVersionFromFormat(string)`.
