@@ -14,7 +14,8 @@ function getChilds(element: PackItem): Thenable<PackItem[]> {
                 new PackItem('Tags', TreeItemCollapsibleState.Collapsed, PackItemType.tagRoot, join(element.dir, 'tags')),
                 new PackItem('Structures', TreeItemCollapsibleState.Collapsed, PackItemType.structureRoot, join(element.dir, 'structures')),
                 new PackItem('Recipes', TreeItemCollapsibleState.Collapsed, PackItemType.recipeRoot, join(element.dir, 'recipes')),
-                new PackItem('Loot Tables', TreeItemCollapsibleState.Collapsed, PackItemType.lootTableRoot, join(element.dir, 'loot_tables'))
+                new PackItem('Loot Tables', TreeItemCollapsibleState.Collapsed, PackItemType.lootTableRoot, join(element.dir, 'loot_tables')),
+                new PackItem('Advancements',TreeItemCollapsibleState.Collapsed,PackItemType.advancementRoot,join(element.dir,'advancements'))
             ]);
         case PackItemType.functionRoot: // *get the elements under a root or folder
         case PackItemType.functionFolder:
@@ -97,6 +98,23 @@ function getChilds(element: PackItem): Thenable<PackItem[]> {
             });
 
             return Promise.resolve(itemms);
+        case PackItemType.advancementRoot:
+        case PackItemType.advancementFolder:
+            if (!existsSync(element.dir)) { return Promise.resolve([]); }
+
+            const itemmss = readdirSync(element.dir).map(r => {
+                if (UtilFunctions.getExtension(r) === "json") {
+                    return new PackItem(UtilFunctions.makeNameGrammar(r), TreeItemCollapsibleState.None, PackItemType.advancement, join(element.dir, r), {
+                        command: 'vscode.open',
+                        title: '',
+                        arguments: [Uri.file(join(element.dir, r))]
+                    });
+                } else {
+                    return new PackItem(UtilFunctions.makeNameGrammar(r), TreeItemCollapsibleState.Collapsed, PackItemType.advancementFolder, join(element.dir, r));
+                }
+            });
+
+            return Promise.resolve(itemmss);
     }
     return Promise.resolve([]);
 }
@@ -154,7 +172,8 @@ export class CurrentPackProvider implements TreeDataProvider<PackItem> {
 export enum PackItemType {
     namespace = 'namespace', functionRoot = 'functionRoot', functionFolder = 'functionFolder', function = 'function',
     tagRoot = 'tagRoot', tagFolder = 'tagFolder', tag = 'tag', structureRoot = 'structureRoot', structure = 'structure', structureFolder = 'structureFolder',
-    recipeRoot = 'recipeRoot', recipeFolder = 'recipeFolder', recipe = 'recipe', lootTableRoot = 'lootTableRoot', lootTableFolder = 'lootTableFolder', lootTable = 'lootTable'
+    recipeRoot = 'recipeRoot', recipeFolder = 'recipeFolder', recipe = 'recipe', lootTableRoot = 'lootTableRoot', lootTableFolder = 'lootTableFolder', lootTable = 'lootTable',
+    advancementRoot='advancementRoot',advancementFolder='advancementFolder',advancement='advancement'
 }
 
 export interface MConfig {
@@ -187,6 +206,9 @@ export class PackItem extends TreeItem {
         if (type === PackItemType.lootTableRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-constant'); }
         if (type === PackItemType.lootTableFolder) { this.iconPath = ThemeIcon.Folder; }
         if (type === PackItemType.lootTable) { this.iconPath = UtilFunctions.getIconPaths('symbol-structure'); }
+        if (type === PackItemType.advancementRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-constant'); }
+        if (type === PackItemType.advancementFolder) { this.iconPath = ThemeIcon.Folder; }
+        if (type === PackItemType.advancement) { this.iconPath = UtilFunctions.getIconPaths('symbol-method'); }
 
         this.contextValue = type;
     }

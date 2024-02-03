@@ -245,12 +245,12 @@
           "group": "inline"
         },
         {
-          "when": "view == workspace && (viewItem == tagRoot || viewItem == functionRoot || viewItem == functionFolder || viewItem == tagFolder||viewItem==recipeRoot||viewItem==recipeFolder||viewItem==structureRoot||viewItem==structureFolder||viewItem==lootTableRoot||viewItem==lootTableFolder)",
+          "when": "view == workspace && (viewItem == tagRoot || viewItem == functionRoot || viewItem == functionFolder || viewItem == tagFolder||viewItem==recipeRoot||viewItem==recipeFolder||viewItem==structureRoot||viewItem==structureFolder||viewItem==lootTableRoot||viewItem==lootTableFolder||viewItem==advancementFolder||viewItem==advancementRoot)",
           "command": "mc.workspace.createFolder",
           "group": "inline"
         },
         {
-          "when": "view == workspace && (viewItem == functionFolder || viewItem == tagFolder||viewItem == tag||viewItem == function||viewItem == structure||viewItem == lootTable||viewItem==recipe||viewItem==recipeFolder||viewItem==recipe||viewItem==structureFolder||viewItem==structure||viewItem==lootTableFolder||viewItem==lootTable)",
+          "when": "view == workspace && (viewItem == functionFolder || viewItem == tagFolder||viewItem == tag||viewItem == function||viewItem == structure||viewItem == lootTable||viewItem==recipe||viewItem==recipeFolder||viewItem==recipe||viewItem==structureFolder||viewItem==structure||viewItem==lootTableFolder||viewItem==lootTable||viewItem==advancementFolder||viewItem==advancementRoot)",
           "command": "mc.workspace.delete",
           "group": "inline"
         },
