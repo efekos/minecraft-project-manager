@@ -73,7 +73,7 @@ export class WorldsProvider implements TreeDataProvider<Items<Datapack>> {
      */
     getDatapacks(directory: string): Datapack[] {
         const result: Datapack[] = [];
-        if(!existsSync(directory)) {mkdirSync(directory);}
+        if (!existsSync(directory)) { mkdirSync(directory); }
         readdirSync(directory).forEach(packFolder => {
             const mcmetaDir = join(directory, packFolder, 'pack.mcmeta');
             if (!existsSync(mcmetaDir)) { return; }

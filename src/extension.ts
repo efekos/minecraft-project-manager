@@ -55,7 +55,7 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerCommand('mc.workspace.createFolder', (tag: PackItem) => mcWorkspaceCreateFolder(cprovider, tag)),
 		vscode.commands.registerCommand('mc.workspace.createRecipe', (tag: PackItem) => mcWorkspaceCreateRecipe(cprovider, tag)),
 		vscode.commands.registerCommand('mc.workspace.createLootTable', (tag: PackItem) => mcWorkspaceCreateLootTable(cprovider, tag)),
-		vscode.commands.registerCommand('mc.workspace.importStructure', (tag: PackItem) => mcWorkspaceImportStructure(cprovider, tag,rootPath)),
+		vscode.commands.registerCommand('mc.workspace.importStructure', (tag: PackItem) => mcWorkspaceImportStructure(cprovider, tag, rootPath)),
 	);
 }
 

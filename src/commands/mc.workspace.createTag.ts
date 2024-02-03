@@ -8,13 +8,13 @@ import { join } from "path";
 export default async (provider: CurrentPackProvider, tag: PackItem) => {
     const name = await window.showInputBox({ title: 'Enter a Tag Name', placeHolder: 'My New Tag' });
     if (!name || name === undefined) { return; };
-    const dir = join(tag.dir, UtilFunctions.revertGrammaredName(name)+".json");
+    const dir = join(tag.dir, UtilFunctions.revertGrammaredName(name) + ".json");
 
     if (!existsSync(tag.dir)) { mkdirSync(tag.dir, { recursive: true }); };
 
     await writeFileSync(dir, JSON.stringify({
-        values:[]
-    },undefined,2));
+        values: []
+    }, undefined, 2));
     commands.executeCommand('vscode.open', Uri.file(dir));
     provider.refresh();
 };

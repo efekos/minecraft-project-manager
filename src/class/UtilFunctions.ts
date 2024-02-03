@@ -65,7 +65,7 @@ export class UtilFunctions {
             readdirSync(dirr).forEach(file => {
                 const newDir = join(dirr, file);
 
-                if(file.endsWith(".nbt")){
+                if (file.endsWith(".nbt")) {
                     finalPaths.push(newDir);
                 } else {
                     a(newDir);
@@ -75,6 +75,6 @@ export class UtilFunctions {
         }
 
         a(dir);
-        return finalPaths.map(r=>r.replace(dir,"").slice(1));
+        return finalPaths.map(r => r.replace(dir, "").slice(1));
     }
 }

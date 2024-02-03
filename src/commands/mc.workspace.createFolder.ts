@@ -10,6 +10,6 @@ export default async (provider: CurrentPackProvider, func: PackItem) => {
     if (!name || name === undefined) { return; };
     const dir = join(func.dir, UtilFunctions.revertGrammaredName(name));
 
-    await mkdirSync(dir,{recursive:true});
+    await mkdirSync(dir, { recursive: true });
     provider.refresh();
 };

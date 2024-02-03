@@ -8,7 +8,7 @@ import { join } from "path";
 export default async (provider: CurrentPackProvider, func: PackItem) => {
     const name = await window.showInputBox({ title: 'Enter a Function Name', placeHolder: 'My New Function' });
     if (!name || name === undefined) { return; };
-    const dir = join(func.dir, UtilFunctions.revertGrammaredName(name)+".mcfunction");
+    const dir = join(func.dir, UtilFunctions.revertGrammaredName(name) + ".mcfunction");
 
     if (!existsSync(func.dir)) { mkdirSync(func.dir, { recursive: true }); };
 
