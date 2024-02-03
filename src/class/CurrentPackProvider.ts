@@ -190,7 +190,7 @@ export class PackItem extends TreeItem {
     ) {
         super(label, collapsibleState);
 
-        if (type === PackItemType.namespace) { this.iconPath = UtilFunctions.getIconPaths('symbol-namespace'); }
+        if (type === PackItemType.namespace) { this.iconPath = UtilFunctions.getIconPaths(`symbol-${label==="minecraft"?'bold-':''}namespace`); }
         if (type === PackItemType.functionRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-constant'); }
         if (type === PackItemType.functionFolder) { this.iconPath = ThemeIcon.Folder; }
         if (type === PackItemType.function) { this.iconPath = UtilFunctions.getIconPaths('symbol-method'); }
