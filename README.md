@@ -37,7 +37,7 @@ Initial release.
 
 ### 1.1
 
-* 5 Bugs were released.
+* 5 Bugs were fixed.
 * Now you can import structures from other namespaces.
 * Added 'Advancements' tab to *Current Pack* view.
 
