@@ -9,7 +9,7 @@ import { UtilFunctions } from "../class/UtilFunctions";
 
 async function impotyWorld(cprovider: CurrentPackProvider, item: PackItem, rootpath: string) {
     const dir = join(rootpath, '..', '..', 'generated');
-    if (!existsSync(dir)) mkdirSync(dir);
+    if (!existsSync(dir)) {mkdirSync(dir);};
     const items = await window.showQuickPick(UtilFunctions.getFiles(dir, "nbt").map(r => { return { label: r.replace("\\structures\\", ":") }; }), { canPickMany: true, title: 'Choose structures to import' });
 
     if (items?.length === 0) { return; }
@@ -28,7 +28,7 @@ async function impotyWorld(cprovider: CurrentPackProvider, item: PackItem, rootp
             const copyPath = join(item.dir, copyDir.join("\\"));
             const somethin = copyPath.split("\\");
             somethin.pop();
-            if (!existsSync(somethin.join("\\"))) mkdirSync(somethin.join("\\"), { recursive: true });
+            if (!existsSync(somethin.join("\\"))) {mkdirSync(somethin.join("\\"), { recursive: true });}
 
             await copyFile(actualPath, join(item.dir, copyDir.join("\\")), (e) => {
                 if (e) {

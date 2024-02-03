@@ -25,6 +25,7 @@ export default async (provider: WorldsProvider, world: World<Datapack>) => {
         await mkdirSync(`${dir}\\data\\minecraft\\tags\\functions`, { recursive: true }); //recursive stuff too
         await writeFile(`${dir}\\pack.mcmeta`, JSON.stringify({ //pack.mcmeta
             pack: {
+                // eslint-disable-next-line @typescript-eslint/naming-convention
                 pack_format: workspace.getConfiguration('minecraftProjectManager').get('worlds.defaultPackFormat'),//default format
                 description: workspace.getConfiguration('minecraftProjectManager').get('worlds.defaultPackDescription')//default desc
             }
