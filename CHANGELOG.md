@@ -78,7 +78,10 @@
 
 * Updated datapack versions of `WorldsProvider.getVersionFromFormat(string)`.
 
-## 1.1.0
+# 1.1
 
-* Added 'Advancements' tab to 'MCM: Current Pack'
+## 1.1.0
+* Updated datapack versions of `WorldProvider.getVersionFromFormat(string)`.
+* Added 'Advancements' tab to 'MCM: Current Pack'.
 * Added command `mc.workspace.createAdvancement`: Creates a template in the 'Advancements' tab of a namespace.
+* Now 'minecraft' namespace has a special new icon: `symbol-bold-namespace`

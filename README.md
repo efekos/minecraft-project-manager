@@ -31,8 +31,14 @@ There is no known issues yet.
 
 > This section only updates for major and minor version changes. For more detailed and patch included release notes, see [changelog](./CHANGELOG.md).
 
-### 1.0.0
+### 1.0
 
 Initial release.
+
+### 1.1
+
+* 5 Bugs were released.
+* Now you can import structures from other namespaces.
+* Added 'Advancements' tab to *Current Pack* view.
 
 **Enjoy!**
