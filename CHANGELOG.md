@@ -77,3 +77,8 @@
 ## 1.0.4
 
 * Updated datapack versions of `WorldsProvider.getVersionFromFormat(string)`.
+
+## 1.1.0
+
+* Added 'Advancements' tab to 'MCM: Current Pack'
+* Added command `mc.workspace.createAdvancement`: Creates a template in the 'Advancements' tab of a namespace.

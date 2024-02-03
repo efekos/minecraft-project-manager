@@ -108,6 +108,14 @@
         "shortTitle": "Create new Tag"
       },
       {
+        "command": "mc.workspace.createAdvancement",
+        "title": "Create New Advancement in Workspace",
+        "icon":"$(new-file)",
+        "category": "MCM",
+        "enablement": "true",
+        "shortTitle": "Create new Advancement"
+      },
+      {
         "command": "mc.workspace.delete",
         "title": "Delete in Workspace",
         "icon":"$(trash)",
@@ -164,6 +172,10 @@
       "commandPalette": [
         {
           "command": "mc.open",
+          "when": "false"
+        },
+        {
+          "command": "mc.workspace.createAdvancement",
           "when": "false"
         },
         {
@@ -257,6 +269,11 @@
         {
           "command": "mc.workspace.createRecipe",
           "when": "view == workspace && (viewItem == recipeFolder||viewItem == recipeRoot)",
+          "group": "inline"
+        },
+        {
+          "command": "mc.workspace.createAdvancement",
+          "when": "view == workspace && (viewItem == advancementFolder||viewItem == advancementRoot)",
           "group": "inline"
         },
         {

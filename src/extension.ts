@@ -15,6 +15,7 @@ import mcWorkspaceCreateLootTable from './commands/mc.workspace.createLootTable'
 import mcWorkspaceImportStructure from './commands/mc.workspace.importStructure';
 import mcWorkspaceCreateFunction from './commands/mc.workspace.createFunction';
 import mcWorkspaceCreateTag from './commands/mc.workspace.createTag';
+import mcWorkspaceCreateAdvancement from './commands/mc.workspace.createAdvancement';
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -55,6 +56,7 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerCommand('mc.workspace.createFolder', (tag: PackItem) => mcWorkspaceCreateFolder(cprovider, tag)),
 		vscode.commands.registerCommand('mc.workspace.createRecipe', (tag: PackItem) => mcWorkspaceCreateRecipe(cprovider, tag)),
 		vscode.commands.registerCommand('mc.workspace.createLootTable', (tag: PackItem) => mcWorkspaceCreateLootTable(cprovider, tag)),
+		vscode.commands.registerCommand('mc.workspace.createAdvancement', (tag: PackItem) => mcWorkspaceCreateAdvancement(cprovider, tag)),
 		vscode.commands.registerCommand('mc.workspace.importStructure', (tag: PackItem) => mcWorkspaceImportStructure(cprovider, tag, rootPath)),
 	);
 }
