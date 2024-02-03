@@ -262,7 +262,7 @@
           "group": "inline"
         },
         {
-          "when": "view == workspace && (viewItem == functionFolder || viewItem == tagFolder||viewItem == tag||viewItem == function||viewItem == structure||viewItem == lootTable||viewItem==recipe||viewItem==recipeFolder||viewItem==recipe||viewItem==structureFolder||viewItem==structure||viewItem==lootTableFolder||viewItem==lootTable||viewItem==advancementFolder||viewItem==advancementRoot)",
+          "when": "view == workspace && (viewItem == functionFolder || viewItem == tagFolder||viewItem == tag||viewItem == function||viewItem == structure||viewItem == lootTable||viewItem==recipe||viewItem==recipeFolder||viewItem==recipe||viewItem==structureFolder||viewItem==structure||viewItem==lootTableFolder||viewItem==lootTable||viewItem==advancementFolder||viewItem==advancement)",
           "command": "mc.workspace.delete",
           "group": "inline"
         },
