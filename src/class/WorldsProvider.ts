@@ -29,37 +29,39 @@ export class WorldsProvider implements TreeDataProvider<Items<Datapack>> {
     /**
      * Gets mc version from a format
      * @param format pack format
-     * @returns mc version of what format means, with a - or + if its not between 1.14-24w03a
-     * @since 1.0.4
+     * @returns mc version of what format means, with a - or + if its not between 1.14-24w05a
+     * @since 1.0.5
      */
     getVersionFromFormat(format: number): string {
         if (format < 4) { return "1.14-"; };
-        if (format == 4) { return "1.14"; };
-        if (format == 5) { return "1.15"; };
-        if (format == 6) { return "1.16"; };
-        if (format == 7) { return "1.17"; };
-        if (format == 8) { return "1.18"; };
-        if (format == 9) { return "1.18.2"; };
-        if (format == 10) { return "1.19"; };
-        if (format == 11) { return "23w04a"; };
-        if (format == 12) { return "1.19.4"; };
-        if (format == 13) { return "23w13a"; };
-        if (format == 14) { return "23w16a"; };
-        if (format >= 15) { return "1.20"; };
-        if (format == 16) { return "23w31a"; };
-        if (format == 17) { return "23w32a"; };
-        if (format == 18) { return "1.20.2"; };
-        if (format == 19) { return "23w40a"; };
-        if (format == 20) { return "23w41a"; };
-        if (format == 21) { return "23w42a"; };
-        if (format == 22) { return "23w43a"; };
-        if (format == 23) { return "23w44a"; };
-        if (format == 24) { return "23w45a"; };
-        if (format == 25) { return "23w46a"; };
-        if (format == 26) { return "1.20.4"; };
-        if (format == 27) { return "23w51a"; };
-        if (format == 28) { return "24w03a"; };
-        if (format > 28) { return "24w03a+"; };
+        if (format === 4) { return "1.14"; };
+        if (format === 5) { return "1.15"; };
+        if (format === 6) { return "1.16"; };
+        if (format === 7) { return "1.17"; };
+        if (format === 8) { return "1.18"; };
+        if (format === 9) { return "1.18.2"; };
+        if (format === 10) { return "1.19"; };
+        if (format === 11) { return "23w04a"; };
+        if (format === 12) { return "1.19.4"; };
+        if (format === 13) { return "23w13a"; };
+        if (format === 14) { return "23w16a"; };
+        if (format === 15) { return "1.20"; };
+        if (format === 16) { return "23w31a"; };
+        if (format === 17) { return "23w32a"; };
+        if (format === 18) { return "1.20.2"; };
+        if (format === 19) { return "23w40a"; };
+        if (format === 20) { return "23w41a"; };
+        if (format === 21) { return "23w42a"; };
+        if (format === 22) { return "23w43a"; };
+        if (format === 23) { return "23w44a"; };
+        if (format === 24) { return "23w45a"; };
+        if (format === 25) { return "23w46a"; };
+        if (format === 26) { return "1.20.4"; };
+        if (format === 27) { return "23w51a"; };
+        if (format === 28) { return "24w03a"; };
+        if (format === 29) { return "24w04a"; };
+        if (format === 30) { return "24w05a"; };
+        if (format > 30) { return "24w05b+"; };
         return "?";
     }
 
