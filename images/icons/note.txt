@@ -3,3 +3,4 @@ https://github.com/microsoft/vscode-icons
 * symbol-import | combined arrow-down and parts of symbol-array
 * symbol-export | combined arrow-down and parts of symbol-array
 * symbol-world | modified symbol-method
+* symbol-advancement | modified symbol-method inside a square

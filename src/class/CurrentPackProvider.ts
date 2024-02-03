@@ -208,7 +208,7 @@ export class PackItem extends TreeItem {
         if (type === PackItemType.lootTable) { this.iconPath = UtilFunctions.getIconPaths('symbol-structure'); }
         if (type === PackItemType.advancementRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-constant'); }
         if (type === PackItemType.advancementFolder) { this.iconPath = ThemeIcon.Folder; }
-        if (type === PackItemType.advancement) { this.iconPath = UtilFunctions.getIconPaths('symbol-method'); }
+        if (type === PackItemType.advancement) { this.iconPath = UtilFunctions.getIconPaths('symbol-advancement'); }
 
         this.contextValue = type;
     }
