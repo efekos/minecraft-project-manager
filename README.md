@@ -33,12 +33,12 @@ There is no known issues yet.
 
 ### 1.0
 
-Initial release.
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-dot.svg) Initial release.
 
 ### 1.1
 
-* 5 Bugs were fixed.
-* Now you can import structures from other namespaces.
-* Added 'Advancements' tab to *Current Pack* view.
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-fix.svg) 5 Bugs were fixed.\
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.svg) Now you can import structures from other namespaces.\
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.svg) Added 'Advancements' tab to *Current Pack* view.
 
 **Enjoy!**
