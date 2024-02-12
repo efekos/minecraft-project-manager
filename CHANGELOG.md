@@ -96,3 +96,7 @@
 ![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.svg) Added 'Advancements' tab to 'MCM: Current Pack'.\
 ![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.svg) Added command `mc.workspace.createAdvancement`: Creates a template in the 'Advancements' tab of a namespace.\
 ![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-dot.svg) Now 'minecraft' namespace has a special new icon: `symbol-bold-namespace`
+
+## 1.1.1
+
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.svg) Added custom icons to namespace contents.
