@@ -224,7 +224,22 @@ export class PackItem extends TreeItem {
         }
         if (type === PackItemType.lootTableRoot) { this.iconPath = new ThemeIcon("symbol-constant"); }
         if (type === PackItemType.lootTableFolder) { this.iconPath = ThemeIcon.Folder; }
-        if (type === PackItemType.lootTable) { this.iconPath = new ThemeIcon("symbol-structure"); }
+        if (type === PackItemType.lootTable) { 
+
+            try {
+                const file = readFileSync(dir);
+                const json = JSON.parse(file.toString());
+                const k:LootTableType = json['type'];
+    
+                if (k === 'fishing') { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-fishing'); }
+                else if (k === 'entity') { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-entity'); }
+                else if (k === 'archaeology') { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-archaeology'); }
+                else { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table'); }
+            } catch(e){
+                this.iconPath = UtilFunctions.getIconPaths('symbol-recipe');
+            }
+
+         }
         if (type === PackItemType.advancementRoot) { this.iconPath = new ThemeIcon("symbol-constant"); }
         if (type === PackItemType.advancementFolder) { this.iconPath = ThemeIcon.Folder; }
         if (type === PackItemType.advancement) { this.iconPath = UtilFunctions.getIconPaths('symbol-advancement'); }
@@ -233,4 +248,5 @@ export class PackItem extends TreeItem {
     }
 }
 
+type LootTableType = 'empty'|'chest'|'command'|'fishing'|'entity'|'archaeology'|'gift'|'barter'|'advancement_reward'|'block';
 type RecipeType = 'crafting_shaped'|'crafting_shapeless'|'blasting'|'smoking'|'smelting'|'campfire_cooking'|'smithing'|'stonecutting';
