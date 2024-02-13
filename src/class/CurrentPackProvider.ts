@@ -15,7 +15,7 @@ function getChilds(element: PackItem): Thenable<PackItem[]> {
                 new PackItem('Structures', TreeItemCollapsibleState.Collapsed, PackItemType.structureRoot, join(element.dir, 'structures')),
                 new PackItem('Recipes', TreeItemCollapsibleState.Collapsed, PackItemType.recipeRoot, join(element.dir, 'recipes')),
                 new PackItem('Loot Tables', TreeItemCollapsibleState.Collapsed, PackItemType.lootTableRoot, join(element.dir, 'loot_tables')),
-                new PackItem('Advancements',TreeItemCollapsibleState.Collapsed,PackItemType.advancementRoot,join(element.dir,'advancements'))
+                new PackItem('Advancements', TreeItemCollapsibleState.Collapsed, PackItemType.advancementRoot, join(element.dir, 'advancements'))
             ]);
         case PackItemType.functionRoot: // *get the elements under a root or folder
         case PackItemType.functionFolder:
@@ -173,7 +173,7 @@ export enum PackItemType {
     namespace = 'namespace', functionRoot = 'functionRoot', functionFolder = 'functionFolder', function = 'function',
     tagRoot = 'tagRoot', tagFolder = 'tagFolder', tag = 'tag', structureRoot = 'structureRoot', structure = 'structure', structureFolder = 'structureFolder',
     recipeRoot = 'recipeRoot', recipeFolder = 'recipeFolder', recipe = 'recipe', lootTableRoot = 'lootTableRoot', lootTableFolder = 'lootTableFolder', lootTable = 'lootTable',
-    advancementRoot='advancementRoot',advancementFolder='advancementFolder',advancement='advancement'
+    advancementRoot = 'advancementRoot', advancementFolder = 'advancementFolder', advancement = 'advancement'
 }
 
 export interface MConfig {
@@ -190,7 +190,7 @@ export class PackItem extends TreeItem {
     ) {
         super(label, collapsibleState);
 
-        if (type === PackItemType.namespace) { this.iconPath = UtilFunctions.getIconPaths(`symbol-${label==='minecraft'?'bold-':''}namespace`); }
+        if (type === PackItemType.namespace) { this.iconPath = UtilFunctions.getIconPaths(`symbol-${label === 'minecraft' ? 'bold-' : ''}namespace`); }
         if (type === PackItemType.functionRoot) { this.iconPath = new ThemeIcon('symbol-constant'); }
         if (type === PackItemType.functionFolder) { this.iconPath = ThemeIcon.Folder; }
         if (type === PackItemType.function) { this.iconPath = new ThemeIcon('symbol-method'); }
@@ -203,14 +203,16 @@ export class PackItem extends TreeItem {
         if (type === PackItemType.recipeRoot) { this.iconPath = new ThemeIcon("symbol-constant"); }
         if (type === PackItemType.recipeFolder) { this.iconPath = ThemeIcon.Folder; }
         if (type === PackItemType.recipe) {
-        
+
             const file = readFileSync(dir);
             const json = JSON.parse(file.toString());
             const k = json['type'];
 
-            if(k==='crafting_shaped') {this.iconPath = UtilFunctions.getIconPaths('symbol-recipe');} 
-            else if(k==='crafting_shapeless') {this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-shapeless');}
-            else {this.iconPath = UtilFunctions.getIconPaths('symbol-recipe');}
+            if (k === 'crafting_shaped') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe'); }
+            else if (k === 'crafting_shapeless') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-shapeless'); }
+            else if (k === 'blasting' || k === 'smoking' || k === 'smelting') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-furnace'); }
+            else if (k === 'campfire_cooking') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-campfire'); }
+            else { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe'); }
         }
         if (type === PackItemType.lootTableRoot) { this.iconPath = new ThemeIcon("symbol-constant"); }
         if (type === PackItemType.lootTableFolder) { this.iconPath = ThemeIcon.Folder; }
