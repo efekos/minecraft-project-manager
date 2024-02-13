@@ -208,13 +208,14 @@ export class PackItem extends TreeItem {
             try {
                 const file = readFileSync(dir);
                 const json = JSON.parse(file.toString());
-                const k = json['type'];
+                const k:RecipeType = json['type'];
     
                 if (k === 'crafting_shaped') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe'); }
                 else if (k === 'crafting_shapeless') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-shapeless'); }
                 else if (k === 'blasting' || k === 'smoking' || k === 'smelting') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-furnace'); }
                 else if (k === 'campfire_cooking') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-campfire'); }
                 else if (k === 'smithing') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-smithing'); }
+                else if (k==='stonecutting') {this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-stonecutting')}
                 else { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe'); }
             } catch(e){
                 this.iconPath = UtilFunctions.getIconPaths('symbol-recipe');
@@ -231,3 +232,5 @@ export class PackItem extends TreeItem {
         this.contextValue = type;
     }
 }
+
+type RecipeType = 'crafting_shaped'|'crafting_shapeless'|'blasting'|'smoking'|'smelting'|'campfire_cooking'|'smithing'|'stonecutting';
