@@ -202,7 +202,15 @@ export class PackItem extends TreeItem {
         if (type === PackItemType.structure) { this.iconPath = UtilFunctions.getIconPaths('symbol-field'); }
         if (type === PackItemType.recipeRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-constant'); }
         if (type === PackItemType.recipeFolder) { this.iconPath = ThemeIcon.Folder; }
-        if (type === PackItemType.recipe) { this.iconPath = UtilFunctions.getIconPaths('symbol-numeric'); }
+        if (type === PackItemType.recipe) {
+        
+            const file = readFileSync(dir);
+            const json = JSON.parse(file.toString());
+            const k = json["type"];
+
+            if(k==="crafting_shaped") {this.iconPath = UtilFunctions.getIconPaths('symbol-recipe');} 
+            if(k==="crafting_shapeless") {this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-shapeless');} 
+        }
         if (type === PackItemType.lootTableRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-constant'); }
         if (type === PackItemType.lootTableFolder) { this.iconPath = ThemeIcon.Folder; }
         if (type === PackItemType.lootTable) { this.iconPath = UtilFunctions.getIconPaths('symbol-structure'); }
