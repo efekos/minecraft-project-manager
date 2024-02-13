@@ -209,7 +209,8 @@ export class PackItem extends TreeItem {
             const k = json["type"];
 
             if(k==="crafting_shaped") {this.iconPath = UtilFunctions.getIconPaths('symbol-recipe');} 
-            if(k==="crafting_shapeless") {this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-shapeless');} 
+            else if(k==="crafting_shapeless") {this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-shapeless');}
+            else {this.iconPath = UtilFunctions.getIconPaths('symbol-recipe');}
         }
         if (type === PackItemType.lootTableRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-constant'); }
         if (type === PackItemType.lootTableFolder) { this.iconPath = ThemeIcon.Folder; }
