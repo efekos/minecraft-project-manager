@@ -37,7 +37,7 @@ export function activate(context: vscode.ExtensionContext) {
 	vscode.workspace.onDidChangeWorkspaceFolders(() => { cprovider.refresh(); });
 	vscode.workspace.onDidRenameFiles(() => { cprovider.refresh(); });
 	vscode.workspace.onDidSaveTextDocument(e => {
-		if (e.fileName === join(rootPath as string, 'mconfig.json')) {
+		if (e.fileName === join(rootPath as string, 'mconfig.json')||e.languageId==="json") {
 			cprovider.refresh();
 		}
 	});
