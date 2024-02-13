@@ -1,9 +1,9 @@
-import { existsSync, readFileSync, readdirSync } from "fs";
-import { join } from "path";
-import { Command, Event, EventEmitter, ThemeColor, ThemeIcon, TreeDataProvider, TreeItem, TreeItemCollapsibleState, TreeItemLabel, Uri, workspace } from "vscode";
-import { UtilFunctions } from "./UtilFunctions";
-import { notifications } from "./NotificationProvider";
-
+import { existsSync, readFileSync, readdirSync } from 'fs';
+import { join } from 'path';
+import { Command, Event, EventEmitter, ThemeColor, ThemeIcon, TreeDataProvider, TreeItem, TreeItemCollapsibleState, TreeItemLabel, Uri, workspace } from 'vscode';
+import { UtilFunctions } from './UtilFunctions';
+import { notifications } from './NotificationProvider';
+import * as vscode from 'vscode';
 
 function getChilds(element: PackItem): Thenable<PackItem[]> {
 
@@ -22,7 +22,7 @@ function getChilds(element: PackItem): Thenable<PackItem[]> {
             if (!existsSync(element.dir)) { return Promise.resolve([]); };
 
             const items = readdirSync(element.dir).map(r => {
-                if (UtilFunctions.getExtension(r) === "mcfunction") {
+                if (UtilFunctions.getExtension(r) === 'mcfunction') {
                     return new PackItem(UtilFunctions.makeNameGrammar(r), TreeItemCollapsibleState.None, PackItemType.function, join(element.dir, r), {
                         command: 'vscode.open',
                         title: '',
@@ -39,7 +39,7 @@ function getChilds(element: PackItem): Thenable<PackItem[]> {
             if (!existsSync(element.dir)) { return Promise.resolve([]); }
 
             const itemss = readdirSync(element.dir).map(r => {
-                if (UtilFunctions.getExtension(r) === "json") {
+                if (UtilFunctions.getExtension(r) === 'json') {
                     return new PackItem(UtilFunctions.makeNameGrammar(r), TreeItemCollapsibleState.None, PackItemType.tag, join(element.dir, r), {
                         command: 'vscode.open',
                         title: '',
@@ -56,7 +56,7 @@ function getChilds(element: PackItem): Thenable<PackItem[]> {
             if (!existsSync(element.dir)) { return Promise.resolve([]); }
 
             const itens = readdirSync(element.dir).map(r => {
-                if (UtilFunctions.getExtension(r) === "nbt") {
+                if (UtilFunctions.getExtension(r) === 'nbt') {
                     return new PackItem(UtilFunctions.makeNameGrammar(r), TreeItemCollapsibleState.None, PackItemType.structure, join(element.dir, r));
                 } else {
                     return new PackItem(UtilFunctions.makeNameGrammar(r), TreeItemCollapsibleState.Collapsed, PackItemType.structureFolder, join(element.dir, r));
@@ -69,7 +69,7 @@ function getChilds(element: PackItem): Thenable<PackItem[]> {
             if (!existsSync(element.dir)) { return Promise.resolve([]); }
 
             const itenss = readdirSync(element.dir).map(r => {
-                if (UtilFunctions.getExtension(r) === "json") {
+                if (UtilFunctions.getExtension(r) === 'json') {
                     return new PackItem(UtilFunctions.makeNameGrammar(r), TreeItemCollapsibleState.None, PackItemType.recipe, join(element.dir, r), {
                         command: 'vscode.open',
                         title: '',
@@ -86,7 +86,7 @@ function getChilds(element: PackItem): Thenable<PackItem[]> {
             if (!existsSync(element.dir)) { return Promise.resolve([]); }
 
             const itemms = readdirSync(element.dir).map(r => {
-                if (UtilFunctions.getExtension(r) === "json") {
+                if (UtilFunctions.getExtension(r) === 'json') {
                     return new PackItem(UtilFunctions.makeNameGrammar(r), TreeItemCollapsibleState.None, PackItemType.lootTable, join(element.dir, r), {
                         command: 'vscode.open',
                         title: '',
@@ -103,7 +103,7 @@ function getChilds(element: PackItem): Thenable<PackItem[]> {
             if (!existsSync(element.dir)) { return Promise.resolve([]); }
 
             const itemmss = readdirSync(element.dir).map(r => {
-                if (UtilFunctions.getExtension(r) === "json") {
+                if (UtilFunctions.getExtension(r) === 'json') {
                     return new PackItem(UtilFunctions.makeNameGrammar(r), TreeItemCollapsibleState.None, PackItemType.advancement, join(element.dir, r), {
                         command: 'vscode.open',
                         title: '',
@@ -190,32 +190,32 @@ export class PackItem extends TreeItem {
     ) {
         super(label, collapsibleState);
 
-        if (type === PackItemType.namespace) { this.iconPath = UtilFunctions.getIconPaths(`symbol-${label==="minecraft"?'bold-':''}namespace`); }
-        if (type === PackItemType.functionRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-constant'); }
+        if (type === PackItemType.namespace) { this.iconPath = UtilFunctions.getIconPaths(`symbol-${label==='minecraft'?'bold-':''}namespace`); }
+        if (type === PackItemType.functionRoot) { this.iconPath = new ThemeIcon('symbol-constant'); }
         if (type === PackItemType.functionFolder) { this.iconPath = ThemeIcon.Folder; }
-        if (type === PackItemType.function) { this.iconPath = UtilFunctions.getIconPaths('symbol-method'); }
+        if (type === PackItemType.function) { this.iconPath = new ThemeIcon('symbol-method'); }
         if (type === PackItemType.tag) { this.iconPath = UtilFunctions.getIconPaths('symbol-tag'); }
         if (type === PackItemType.tagFolder) { this.iconPath = ThemeIcon.Folder; }
         if (type === PackItemType.tagRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-tag-root'); }
-        if (type === PackItemType.structureRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-constant'); }
+        if (type === PackItemType.structureRoot) { this.iconPath = new ThemeIcon("symbol-constant"); }
         if (type === PackItemType.structureFolder) { this.iconPath = ThemeIcon.Folder; }
-        if (type === PackItemType.structure) { this.iconPath = UtilFunctions.getIconPaths('symbol-field'); }
-        if (type === PackItemType.recipeRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-constant'); }
+        if (type === PackItemType.structure) { this.iconPath = new ThemeIcon("symbol-field"); }
+        if (type === PackItemType.recipeRoot) { this.iconPath = new ThemeIcon("symbol-constant"); }
         if (type === PackItemType.recipeFolder) { this.iconPath = ThemeIcon.Folder; }
         if (type === PackItemType.recipe) {
         
             const file = readFileSync(dir);
             const json = JSON.parse(file.toString());
-            const k = json["type"];
+            const k = json['type'];
 
-            if(k==="crafting_shaped") {this.iconPath = UtilFunctions.getIconPaths('symbol-recipe');} 
-            else if(k==="crafting_shapeless") {this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-shapeless');}
+            if(k==='crafting_shaped') {this.iconPath = UtilFunctions.getIconPaths('symbol-recipe');} 
+            else if(k==='crafting_shapeless') {this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-shapeless');}
             else {this.iconPath = UtilFunctions.getIconPaths('symbol-recipe');}
         }
-        if (type === PackItemType.lootTableRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-constant'); }
+        if (type === PackItemType.lootTableRoot) { this.iconPath = new ThemeIcon("symbol-constant"); }
         if (type === PackItemType.lootTableFolder) { this.iconPath = ThemeIcon.Folder; }
-        if (type === PackItemType.lootTable) { this.iconPath = UtilFunctions.getIconPaths('symbol-structure'); }
-        if (type === PackItemType.advancementRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-constant'); }
+        if (type === PackItemType.lootTable) { this.iconPath = new ThemeIcon("symbol-structure"); }
+        if (type === PackItemType.advancementRoot) { this.iconPath = new ThemeIcon("symbol-constant"); }
         if (type === PackItemType.advancementFolder) { this.iconPath = ThemeIcon.Folder; }
         if (type === PackItemType.advancement) { this.iconPath = UtilFunctions.getIconPaths('symbol-advancement'); }
 
