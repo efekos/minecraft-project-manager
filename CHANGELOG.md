@@ -99,4 +99,5 @@
 
 ## 1.1.1
 
-![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.svg) Added custom icons to namespace contents.
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.svg) Added custom icons to recipes.
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-minus.svg) Removed default icons from 'icons' folder.
