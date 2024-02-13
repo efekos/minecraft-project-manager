@@ -204,15 +204,22 @@ export class PackItem extends TreeItem {
         if (type === PackItemType.recipeFolder) { this.iconPath = ThemeIcon.Folder; }
         if (type === PackItemType.recipe) {
 
-            const file = readFileSync(dir);
-            const json = JSON.parse(file.toString());
-            const k = json['type'];
-
-            if (k === 'crafting_shaped') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe'); }
-            else if (k === 'crafting_shapeless') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-shapeless'); }
-            else if (k === 'blasting' || k === 'smoking' || k === 'smelting') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-furnace'); }
-            else if (k === 'campfire_cooking') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-campfire'); }
-            else { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe'); }
+            
+            try {
+                const file = readFileSync(dir);
+                const json = JSON.parse(file.toString());
+                const k = json['type'];
+    
+                if (k === 'crafting_shaped') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe'); }
+                else if (k === 'crafting_shapeless') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-shapeless'); }
+                else if (k === 'blasting' || k === 'smoking' || k === 'smelting') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-furnace'); }
+                else if (k === 'campfire_cooking') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-campfire'); }
+                else if (k === 'smithing') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-smithing'); }
+                else { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe'); }
+            } catch(e){
+                this.iconPath = UtilFunctions.getIconPaths('symbol-recipe');
+            }
+            
         }
         if (type === PackItemType.lootTableRoot) { this.iconPath = new ThemeIcon("symbol-constant"); }
         if (type === PackItemType.lootTableFolder) { this.iconPath = ThemeIcon.Folder; }
