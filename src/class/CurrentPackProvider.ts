@@ -242,7 +242,7 @@ export class PackItem extends TreeItem {
             }
 
          }
-        if (type === PackItemType.advancementRoot) { this.iconPath = new ThemeIcon("symbol-constant"); }
+        if (type === PackItemType.advancementRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-advancement-root'); }
         if (type === PackItemType.advancementFolder) { this.iconPath = ThemeIcon.Folder; }
         if (type === PackItemType.advancement) { this.iconPath = UtilFunctions.getIconPaths('symbol-advancement'); }
 
