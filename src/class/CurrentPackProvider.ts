@@ -197,9 +197,9 @@ export class PackItem extends TreeItem {
         if (type === PackItemType.tag) { this.iconPath = UtilFunctions.getIconPaths('symbol-tag'); }
         if (type === PackItemType.tagFolder) { this.iconPath = ThemeIcon.Folder; }
         if (type === PackItemType.tagRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-tag-root'); }
-        if (type === PackItemType.structureRoot) { this.iconPath = new ThemeIcon("symbol-constant"); }
+        if (type === PackItemType.structureRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-structure-root'); }
         if (type === PackItemType.structureFolder) { this.iconPath = ThemeIcon.Folder; }
-        if (type === PackItemType.structure) { this.iconPath = new ThemeIcon("symbol-field"); }
+        if (type === PackItemType.structure) { this.iconPath = UtilFunctions.getIconPaths('symbol-structure'); }
         if (type === PackItemType.recipeRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-root'); }
         if (type === PackItemType.recipeFolder) { this.iconPath = ThemeIcon.Folder; }
         if (type === PackItemType.recipe) {
