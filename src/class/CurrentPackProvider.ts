@@ -200,7 +200,7 @@ export class PackItem extends TreeItem {
         if (type === PackItemType.structureRoot) { this.iconPath = new ThemeIcon("symbol-constant"); }
         if (type === PackItemType.structureFolder) { this.iconPath = ThemeIcon.Folder; }
         if (type === PackItemType.structure) { this.iconPath = new ThemeIcon("symbol-field"); }
-        if (type === PackItemType.recipeRoot) { this.iconPath = new ThemeIcon("symbol-constant"); }
+        if (type === PackItemType.recipeRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-root'); }
         if (type === PackItemType.recipeFolder) { this.iconPath = ThemeIcon.Folder; }
         if (type === PackItemType.recipe) {
 
@@ -222,7 +222,7 @@ export class PackItem extends TreeItem {
             }
             
         }
-        if (type === PackItemType.lootTableRoot) { this.iconPath = new ThemeIcon("symbol-constant"); }
+        if (type === PackItemType.lootTableRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-root'); }
         if (type === PackItemType.lootTableFolder) { this.iconPath = ThemeIcon.Folder; }
         if (type === PackItemType.lootTable) { 
 
@@ -234,6 +234,8 @@ export class PackItem extends TreeItem {
                 if (k === 'fishing') { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-fishing'); }
                 else if (k === 'entity') { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-entity'); }
                 else if (k === 'archaeology') { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-archaeology'); }
+                else if (k === 'block') { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-block'); }
+                else if (k === 'command') { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-command'); }
                 else { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table'); }
             } catch(e){
                 this.iconPath = UtilFunctions.getIconPaths('symbol-recipe');
