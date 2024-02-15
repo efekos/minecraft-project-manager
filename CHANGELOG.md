@@ -99,8 +99,8 @@
 
 ## 1.1.1
 
-![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.png) Added custom icons to recipes.
-![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.png) Added custom icons to loot tables.
-![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.png) Added custom icons to structures.
-![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.png) Added custom icons to tags.
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.png) Added custom icons to recipes.\
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.png) Added custom icons to loot tables.\
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.png) Added custom icons to structures.\
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.png) Added custom icons to tags.\
 ![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-minus.png) Removed default icons from 'icons' folder.
