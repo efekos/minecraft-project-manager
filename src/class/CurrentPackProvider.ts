@@ -192,7 +192,7 @@ export class PackItem extends TreeItem {
 
         if (type === PackItemType.namespace) { this.iconPath = UtilFunctions.getIconPaths(`symbol-${label === 'minecraft' ? 'bold-' : ''}namespace`); }
         if (type === PackItemType.functionRoot) { this.iconPath = new ThemeIcon('symbol-constant'); }
-        if (type === PackItemType.functionFolder) { this.iconPath = ThemeIcon.Folder; }
+        if (type === PackItemType.functionFolder) { this.iconPath = ThemeIcon.Folder; this.description = `${readdirSync(dir).length} items`; }
         if (type === PackItemType.function) { this.iconPath = new ThemeIcon('symbol-method'); }
         if (type === PackItemType.tag) { 
             this.iconPath = UtilFunctions.getIconPaths('symbol-tag');
@@ -208,13 +208,13 @@ export class PackItem extends TreeItem {
             }
             catch(ignored){}
         }
-        if (type === PackItemType.tagFolder) { this.iconPath = ThemeIcon.Folder; }
+        if (type === PackItemType.tagFolder) { this.iconPath = ThemeIcon.Folder; this.description = `${readdirSync(dir).length} items`; }
         if (type === PackItemType.tagRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-tag-root'); }
         if (type === PackItemType.structureRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-structure-root'); }
-        if (type === PackItemType.structureFolder) { this.iconPath = ThemeIcon.Folder; }
+        if (type === PackItemType.structureFolder) { this.iconPath = ThemeIcon.Folder; this.description = `${readdirSync(dir).length} items`; }
         if (type === PackItemType.structure) { this.iconPath = UtilFunctions.getIconPaths('symbol-structure'); }
         if (type === PackItemType.recipeRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-root'); }
-        if (type === PackItemType.recipeFolder) { this.iconPath = ThemeIcon.Folder; }
+        if (type === PackItemType.recipeFolder) { this.iconPath = ThemeIcon.Folder; this.description = `${readdirSync(dir).length} items`; }
         if (type === PackItemType.recipe) {
 
             
@@ -236,7 +236,7 @@ export class PackItem extends TreeItem {
             
         }
         if (type === PackItemType.lootTableRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-root'); }
-        if (type === PackItemType.lootTableFolder) { this.iconPath = ThemeIcon.Folder; }
+        if (type === PackItemType.lootTableFolder) { this.iconPath = ThemeIcon.Folder; this.description = `${readdirSync(dir).length} items`; }
         if (type === PackItemType.lootTable) { 
 
             try {
@@ -258,7 +258,7 @@ export class PackItem extends TreeItem {
 
          }
         if (type === PackItemType.advancementRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-advancement-root'); }
-        if (type === PackItemType.advancementFolder) { this.iconPath = ThemeIcon.Folder; }
+        if (type === PackItemType.advancementFolder) { this.iconPath = ThemeIcon.Folder; this.description = `${readdirSync(dir).length} items`; }
         if (type === PackItemType.advancement) { 
             this.iconPath = UtilFunctions.getIconPaths('symbol-advancement');
          
