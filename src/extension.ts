@@ -16,6 +16,8 @@ import mcWorkspaceImportStructure from './commands/mc.workspace.importStructure'
 import mcWorkspaceCreateFunction from './commands/mc.workspace.createFunction';
 import mcWorkspaceCreateTag from './commands/mc.workspace.createTag';
 import mcWorkspaceCreateAdvancement from './commands/mc.workspace.createAdvancement';
+import { lang } from './class/LanguageProvider';
+import { existsSync } from 'fs';
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -58,6 +60,11 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerCommand('mc.workspace.createAdvancement', (tag: PackItem) => mcWorkspaceCreateAdvancement(cprovider, tag)),
 		vscode.commands.registerCommand('mc.workspace.importStructure', (tag: PackItem) => mcWorkspaceImportStructure(cprovider, tag, rootPath)),
 	);
+
+	const path = join(process.env.APPDATA??'','.minecraft','resourcepacks');
+	if(!existsSync(path)) {return;};
+
+	lang.load(path);
 }
 
 export function deactivate() { }
