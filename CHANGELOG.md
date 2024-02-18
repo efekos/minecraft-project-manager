@@ -104,3 +104,10 @@
 ![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.png) Added custom icons to structures.\
 ![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.png) Added custom icons to tags.\
 ![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-minus.png) Removed default icons from 'icons' folder.
+
+## 1.1.2
+
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.png) Added description to items in 'MCM: Current Pack'\
+* Advancement show their name in-game.
+* Tags show amount of values inside them.
+* Loot tables show the pool number.
