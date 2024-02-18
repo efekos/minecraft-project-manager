@@ -194,7 +194,20 @@ export class PackItem extends TreeItem {
         if (type === PackItemType.functionRoot) { this.iconPath = new ThemeIcon('symbol-constant'); }
         if (type === PackItemType.functionFolder) { this.iconPath = ThemeIcon.Folder; }
         if (type === PackItemType.function) { this.iconPath = new ThemeIcon('symbol-method'); }
-        if (type === PackItemType.tag) { this.iconPath = UtilFunctions.getIconPaths('symbol-tag'); }
+        if (type === PackItemType.tag) { 
+            this.iconPath = UtilFunctions.getIconPaths('symbol-tag');
+            
+            try{
+
+                const json = JSON.parse(readFileSync(dir).toString());
+                if(typeof json === 'object'&&'values' in json){
+                    const values:string[] = json['values'];
+                    this.description = `(${values.length})`;
+                }
+
+            }
+            catch(ignored){}
+        }
         if (type === PackItemType.tagFolder) { this.iconPath = ThemeIcon.Folder; }
         if (type === PackItemType.tagRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-tag-root'); }
         if (type === PackItemType.structureRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-structure-root'); }
@@ -244,7 +257,24 @@ export class PackItem extends TreeItem {
          }
         if (type === PackItemType.advancementRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-advancement-root'); }
         if (type === PackItemType.advancementFolder) { this.iconPath = ThemeIcon.Folder; }
-        if (type === PackItemType.advancement) { this.iconPath = UtilFunctions.getIconPaths('symbol-advancement'); }
+        if (type === PackItemType.advancement) { 
+            this.iconPath = UtilFunctions.getIconPaths('symbol-advancement');
+         
+            try{
+                const file = readFileSync(dir);
+                const json = JSON.parse(file.toString());
+                
+                if('display' in json&&'title' in json['display']){
+                    const title = json['display']['title'];
+                    
+
+                    if(typeof title === 'object') {
+                        if('text' in title) {this.description = title['text'];}
+                        else if ('translate' in title) {this.description = title['translate'];}
+                    } else if (typeof title === 'string'){this.description = title;}
+                }
+            } catch(e){}
+        }
 
         this.contextValue = type;
     }
