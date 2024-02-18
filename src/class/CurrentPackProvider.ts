@@ -4,6 +4,7 @@ import { Command, Event, EventEmitter, ThemeColor, ThemeIcon, TreeDataProvider, 
 import { UtilFunctions } from './UtilFunctions';
 import { notifications } from './NotificationProvider';
 import * as vscode from 'vscode';
+import { lang } from './LanguageProvider';
 
 function getChilds(element: PackItem): Thenable<PackItem[]> {
 
@@ -272,7 +273,7 @@ export class PackItem extends TreeItem {
 
                     if(typeof title === 'object') {
                         if('text' in title) {this.description = title['text'];}
-                        else if ('translate' in title) {this.description = title['translate'];}
+                        else if ('translate' in title) {this.description = lang.get(title['translate']);}
                     } else if (typeof title === 'string'){this.description = title;}
                 }
             } catch(e){}
