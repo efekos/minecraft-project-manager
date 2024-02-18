@@ -221,14 +221,14 @@ export class PackItem extends TreeItem {
             try {
                 const file = readFileSync(dir);
                 const json = JSON.parse(file.toString());
-                const k:RecipeType = json['type'];
+                const k:RecipeType = (json['type'] as RecipeType).replace("minecraft:","") as RecipeType;
     
                 if (k === 'crafting_shaped') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe'); }
                 else if (k === 'crafting_shapeless') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-shapeless'); }
                 else if (k === 'blasting' || k === 'smoking' || k === 'smelting') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-furnace'); }
                 else if (k === 'campfire_cooking') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-campfire'); }
                 else if (k === 'smithing') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-smithing'); }
-                else if (k==='stonecutting') {this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-stonecutting')}
+                else if (k==='stonecutting') {this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-stonecutting');}
                 else { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe'); }
             } catch(e){
                 this.iconPath = UtilFunctions.getIconPaths('symbol-recipe');
@@ -242,7 +242,7 @@ export class PackItem extends TreeItem {
             try {
                 const file = readFileSync(dir);
                 const json = JSON.parse(file.toString());
-                const k:LootTableType = json['type'];
+                const k:LootTableType = (json['type'] as LootTableType).replace("minecraft:","") as LootTableType;
     
                 if (k === 'fishing') { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-fishing'); }
                 else if (k === 'entity') { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-entity'); }
@@ -250,6 +250,8 @@ export class PackItem extends TreeItem {
                 else if (k === 'block') { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-block'); }
                 else if (k === 'command') { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-command'); }
                 else { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table'); }
+
+                if('pools' in json) {this.description = `${(json['pools'] as unknown[]).length} pools`;}
             } catch(e){
                 this.iconPath = UtilFunctions.getIconPaths('symbol-recipe');
             }
