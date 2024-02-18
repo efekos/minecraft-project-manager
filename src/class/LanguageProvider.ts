@@ -2,26 +2,37 @@ import { existsSync, readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import axios from "axios";
 
-var locale:Record<string,string> = {};
+var locale: Record<string, string> = {};
 
-function loadNamespace(dir:string,code:string = 'en_us'){
-    if(!existsSync(join(dir,'lang'))){return;}
-    const files = readdirSync(join(dir,'lang')).filter(r=>r.endsWith('.json'));
-    if(!files.includes(`${code}.json`)){return;}
+function loadNamespace(dir: string, code: string = 'en_us') {
+    const langPath = join(dir, 'lang');
+    if (!existsSync(langPath)) { return; }
 
-    const json = JSON.parse(readFileSync(join(dir,'lang',`${code}.json`)).toString()) as Record<string,string>;
+    const files = readdirSync(langPath).filter(r => r.endsWith('.json'));
+    if (!files.includes(`${code}.json`)) { return; }
 
-    locale = {...locale,...json}; 
+    const json = JSON.parse(readFileSync(join(langPath, `${code}.json`)).toString()) as Record<string, string>;
+
+    console.log("loaded following: ", json);
+
+    locale = { ...locale, ...json };
 }
 
-function loadPack(dir:string){
-    if(!existsSync(join(dir,'assets'))) {return;}
-    const namespaces = readdirSync(join(dir,'assets'));
+function loadPack(dir: string) {
+    console.log("Loading pack: " + dir);
 
-    namespaces.forEach(namespace=>loadNamespace(join(dir,namespace)));
+    const assetsPath = join(dir, 'assets');
+    if (!existsSync(assetsPath)) { return; }
+
+    const namespaces = readdirSync(assetsPath);
+
+    namespaces.forEach(namespace => {
+        loadNamespace(join(dir, 'assets', namespace));
+    });
+
 }
 
-async function loadVanilla(code:string = 'en_us'){
+async function loadVanilla(code: string = 'en_us') {
     const url = `https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/${code}.json`;
 
     try {
@@ -36,19 +47,19 @@ async function loadVanilla(code:string = 'en_us'){
 
 export namespace lang {
 
-    export async function load(dir:string,code:string = 'en_us'){
+    export async function load(dir: string, code: string = 'en_us') {
         locale = {};
 
         await loadVanilla(code);
-        
-        if(!existsSync(dir)){return;}
-        const packs = readdirSync(dir);
-        await packs.forEach(pack=>loadPack(join(dir,pack)));
 
-        console.log("Successfully loaded the following locale data: ",locale);
+        if (!existsSync(dir)) { return; }
+        const packs = readdirSync(dir);
+        await packs.forEach(pack => loadPack(join(dir, pack)));
+
+        console.log("Successfully loaded the following locale data: ", locale);
     }
 
-    export function get(key:string):string{
+    export function get(key: string): string {
         return key in locale ? locale[key] : key;
     }
 }
