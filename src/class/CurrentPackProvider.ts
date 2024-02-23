@@ -195,19 +195,19 @@ export class PackItem extends TreeItem {
         if (type === PackItemType.functionRoot) { this.iconPath = new ThemeIcon('symbol-constant'); }
         if (type === PackItemType.functionFolder) { this.iconPath = ThemeIcon.Folder; this.description = `${readdirSync(dir).length} items`; }
         if (type === PackItemType.function) { this.iconPath = new ThemeIcon('symbol-method'); }
-        if (type === PackItemType.tag) { 
+        if (type === PackItemType.tag) {
             this.iconPath = UtilFunctions.getIconPaths('symbol-tag');
-            
-            try{
+
+            try {
 
                 const json = JSON.parse(readFileSync(dir).toString());
-                if(typeof json === 'object'&&'values' in json){
-                    const values:string[] = json['values'];
+                if (typeof json === 'object' && 'values' in json) {
+                    const values: string[] = json['values'];
                     this.description = `(${values.length})`;
                 }
 
             }
-            catch(ignored){}
+            catch (ignored) { }
         }
         if (type === PackItemType.tagFolder) { this.iconPath = ThemeIcon.Folder; this.description = `${readdirSync(dir).length} items`; }
         if (type === PackItemType.tagRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-tag-root'); }
@@ -218,33 +218,33 @@ export class PackItem extends TreeItem {
         if (type === PackItemType.recipeFolder) { this.iconPath = ThemeIcon.Folder; this.description = `${readdirSync(dir).length} items`; }
         if (type === PackItemType.recipe) {
 
-            
+
             try {
                 const file = readFileSync(dir);
                 const json = JSON.parse(file.toString());
-                const k:RecipeType = (json['type'] as RecipeType).replace("minecraft:","") as RecipeType;
-    
+                const k: RecipeType = (json['type'] as RecipeType).replace("minecraft:", "") as RecipeType;
+
                 if (k === 'crafting_shaped') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe'); }
                 else if (k === 'crafting_shapeless') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-shapeless'); }
                 else if (k === 'blasting' || k === 'smoking' || k === 'smelting') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-furnace'); }
                 else if (k === 'campfire_cooking') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-campfire'); }
                 else if (k === 'smithing') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-smithing'); }
-                else if (k==='stonecutting') {this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-stonecutting');}
+                else if (k === 'stonecutting') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-stonecutting'); }
                 else { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe'); }
-            } catch(e){
+            } catch (e) {
                 this.iconPath = UtilFunctions.getIconPaths('symbol-recipe');
             }
-            
+
         }
         if (type === PackItemType.lootTableRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-root'); }
         if (type === PackItemType.lootTableFolder) { this.iconPath = ThemeIcon.Folder; this.description = `${readdirSync(dir).length} items`; }
-        if (type === PackItemType.lootTable) { 
+        if (type === PackItemType.lootTable) {
 
             try {
                 const file = readFileSync(dir);
                 const json = JSON.parse(file.toString());
-                const k:LootTableType = (json['type'] as LootTableType).replace("minecraft:","") as LootTableType;
-    
+                const k: LootTableType = (json['type'] as LootTableType).replace("minecraft:", "") as LootTableType;
+
                 if (k === 'fishing') { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-fishing'); }
                 else if (k === 'entity') { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-entity'); }
                 else if (k === 'archaeology') { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-archaeology'); }
@@ -252,36 +252,36 @@ export class PackItem extends TreeItem {
                 else if (k === 'command') { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-command'); }
                 else { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table'); }
 
-                if('pools' in json) {this.description = `${(json['pools'] as unknown[]).length} pools`;}
-            } catch(e){
+                if ('pools' in json) { this.description = `${(json['pools'] as unknown[]).length} pools`; }
+            } catch (e) {
                 this.iconPath = UtilFunctions.getIconPaths('symbol-recipe');
             }
 
-         }
+        }
         if (type === PackItemType.advancementRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-advancement-root'); }
         if (type === PackItemType.advancementFolder) { this.iconPath = ThemeIcon.Folder; this.description = `${readdirSync(dir).length} items`; }
-        if (type === PackItemType.advancement) { 
+        if (type === PackItemType.advancement) {
             this.iconPath = UtilFunctions.getIconPaths('symbol-advancement');
-         
-            try{
+
+            try {
                 const file = readFileSync(dir);
                 const json = JSON.parse(file.toString());
-                
-                if('display' in json&&'title' in json['display']){
-                    const title = json['display']['title'];
-                    
 
-                    if(typeof title === 'object') {
-                        if('text' in title) {this.description = title['text'];}
-                        else if ('translate' in title) {this.description = lang.get(title['translate']);}
-                    } else if (typeof title === 'string'){this.description = title;}
+                if ('display' in json && 'title' in json['display']) {
+                    const title = json['display']['title'];
+
+
+                    if (typeof title === 'object') {
+                        if ('text' in title) { this.description = title['text']; }
+                        else if ('translate' in title) { this.description = lang.get(title['translate']); }
+                    } else if (typeof title === 'string') { this.description = title; }
                 }
-            } catch(e){}
+            } catch (e) { }
         }
 
         this.contextValue = type;
     }
 }
 
-type LootTableType = 'empty'|'chest'|'command'|'fishing'|'entity'|'archaeology'|'gift'|'barter'|'advancement_reward'|'block';
-type RecipeType = 'crafting_shaped'|'crafting_shapeless'|'blasting'|'smoking'|'smelting'|'campfire_cooking'|'smithing'|'stonecutting';
+type LootTableType = 'empty' | 'chest' | 'command' | 'fishing' | 'entity' | 'archaeology' | 'gift' | 'barter' | 'advancement_reward' | 'block';
+type RecipeType = 'crafting_shaped' | 'crafting_shapeless' | 'blasting' | 'smoking' | 'smelting' | 'campfire_cooking' | 'smithing' | 'stonecutting';

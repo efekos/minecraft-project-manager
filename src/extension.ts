@@ -39,7 +39,7 @@ export function activate(context: vscode.ExtensionContext) {
 	vscode.workspace.onDidChangeWorkspaceFolders(() => { cprovider.refresh(); });
 	vscode.workspace.onDidRenameFiles(() => { cprovider.refresh(); });
 	vscode.workspace.onDidSaveTextDocument(e => {
-		if (e.fileName === join(rootPath as string, 'mconfig.json')||e.languageId==="json") {
+		if (e.fileName === join(rootPath as string, 'mconfig.json') || e.languageId === "json") {
 			cprovider.refresh();
 		}
 	});
@@ -61,8 +61,8 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerCommand('mc.workspace.importStructure', (tag: PackItem) => mcWorkspaceImportStructure(cprovider, tag, rootPath)),
 	);
 
-	const path = join(process.env.APPDATA??'','.minecraft','resourcepacks');
-	if(!existsSync(path)) {return;};
+	const path = join(process.env.APPDATA ?? '', '.minecraft', 'resourcepacks');
+	if (!existsSync(path)) { return; };
 
 	lang.load(path);
 }
