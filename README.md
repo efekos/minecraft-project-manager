@@ -1,6 +1,12 @@
 ![Extension Icon](./images/extensionIconSmalll.png)
 # Minecraft Project Manager
 
+![](https://badgen.net/github/stars/efekos/minecraft-project-manager)
+![](https://badgen.net/github/license/efekos/minecraft-project-manager)
+![](https://badgen.net/vs-marketplace/v/efekos.minecraft-project-manager)
+![](https://badgen.net/vs-marketplace/i/efekos.minecraft-project-manager)
+![](https://badgen.net/vs-marketplace/rating/efekos.minecraft-project-manager)
+
 This extension will help you managing your Minecraft datapacks and switch between them easily.
 
 > You must have Minecraft: Java Edition installed in default location for this extension to work properly!
