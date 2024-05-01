@@ -113,4 +113,5 @@
 * Tags show amount of values inside them.
 * Loot tables show the pool number.
 
-![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-dot.png) Updated pack formats of `WorldProvider.getVersionFromFormat(string)`.
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-dot.png) Updated pack formats of `WorldProvider.getVersionFromFormat(string)`.\
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-change.png) Bumped dependency versions.
