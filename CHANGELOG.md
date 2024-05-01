@@ -107,7 +107,10 @@
 
 ## 1.1.2
 
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.png) Added badges to readme.\
 ![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.png) Added description to items in 'MCM: Current Pack'\
 * Advancement show their name in-game.
 * Tags show amount of values inside them.
 * Loot tables show the pool number.
+
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-dot.png) Updated pack formats of `WorldProvider.getVersionFromFormat(string)`.
