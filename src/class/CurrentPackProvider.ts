@@ -11,12 +11,12 @@ function getChilds(element: PackItem): Thenable<PackItem[]> {
     switch (element.type) {
         case PackItemType.namespace: // *get basic things under a namespace
             return Promise.resolve([
-                new PackItem('Functions', TreeItemCollapsibleState.Collapsed, PackItemType.functionRoot, join(element.dir, 'functions')),
-                new PackItem('Tags', TreeItemCollapsibleState.Collapsed, PackItemType.tagRoot, join(element.dir, 'tags')),
-                new PackItem('Structures', TreeItemCollapsibleState.Collapsed, PackItemType.structureRoot, join(element.dir, 'structures')),
-                new PackItem('Recipes', TreeItemCollapsibleState.Collapsed, PackItemType.recipeRoot, join(element.dir, 'recipes')),
-                new PackItem('Loot Tables', TreeItemCollapsibleState.Collapsed, PackItemType.lootTableRoot, join(element.dir, 'loot_tables')),
-                new PackItem('Advancements', TreeItemCollapsibleState.Collapsed, PackItemType.advancementRoot, join(element.dir, 'advancements'))
+                new PackItem('Functions', TreeItemCollapsibleState.Collapsed, PackItemType.functionRoot, join(element.dir, 'functions')).addItemsDetail(),
+                new PackItem('Tags', TreeItemCollapsibleState.Collapsed, PackItemType.tagRoot, join(element.dir, 'tags')).addItemsDetail(),
+                new PackItem('Structures', TreeItemCollapsibleState.Collapsed, PackItemType.structureRoot, join(element.dir, 'structures')).addItemsDetail(),
+                new PackItem('Recipes', TreeItemCollapsibleState.Collapsed, PackItemType.recipeRoot, join(element.dir, 'recipes')).addItemsDetail(),
+                new PackItem('Loot Tables', TreeItemCollapsibleState.Collapsed, PackItemType.lootTableRoot, join(element.dir, 'loot_tables')).addItemsDetail(),
+                new PackItem('Advancements', TreeItemCollapsibleState.Collapsed, PackItemType.advancementRoot, join(element.dir, 'advancements')).addItemsDetail()
             ]);
         case PackItemType.functionRoot: // *get the elements under a root or folder
         case PackItemType.functionFolder:
@@ -281,6 +281,13 @@ export class PackItem extends TreeItem {
 
         this.contextValue = type;
     }
+
+    public addItemsDetail() {
+        if (!existsSync(this.dir)) { return this; }
+        this.description = `${readdirSync(this.dir).length} items`;
+        return this;
+    }
+
 }
 
 type LootTableType = 'empty' | 'chest' | 'command' | 'fishing' | 'entity' | 'archaeology' | 'gift' | 'barter' | 'advancement_reward' | 'block';
