@@ -259,7 +259,7 @@ export class PackItem extends TreeItem {
 
         }
         if (type === PackItemType.advancementRoot) { this.iconPath = UtilFunctions.getIconPaths('symbol-advancement-root'); }
-        if (type === PackItemType.advancementFolder) { this.iconPath = ThemeIcon.Folder; this.description = `${readdirSync(dir).length} items`; }
+        if (type === PackItemType.advancementFolder) { this.iconPath = ThemeIcon.Folder; this.description = `(${readdirSync(dir).length})`; }
         if (type === PackItemType.advancement) {
             this.iconPath = UtilFunctions.getIconPaths('symbol-advancement');
 
@@ -284,7 +284,7 @@ export class PackItem extends TreeItem {
 
     public addItemsDetail() {
         if (!existsSync(this.dir)) { return this; }
-        this.description = `${readdirSync(this.dir).length} items`;
+        this.description = `(${readdirSync(this.dir).length})`;
         return this;
     }
 

@@ -119,3 +119,5 @@
 ## 1.1.3
 
 ![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-plus.png) Now main datapack items also show items inside them.
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-change.png) Bumped dependency versions.
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-change.png) Changes item count text from `n items` to `(n)`.
