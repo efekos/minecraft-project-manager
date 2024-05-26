@@ -1,31 +1,30 @@
-import { Uri, commands, window } from "vscode";
-import { CurrentPackProvider, PackItem } from "../class/CurrentPackProvider";
-import { notifications } from "../class/NotificationProvider";
-import { existsSync, mkdirSync, writeFileSync } from "fs";
-import { UtilFunctions } from "../class/UtilFunctions";
-import { join } from "path";
+import { CurrentPackProvider, PackItem } from '../class/CurrentPackProvider';
+import { Uri, commands, window } from 'vscode';
+import { existsSync, mkdirSync, writeFileSync } from 'fs';
+import { UtilFunctions } from '../class/UtilFunctions';
+import { join } from 'path';
 
 export default async (provider: CurrentPackProvider, func: PackItem) => {
     const name = await window.showInputBox({ title: 'Enter a Recipe Name', placeHolder: 'My New Recipe' });
     if (!name || name === undefined) { return; };
-    const dir = join(func.dir, UtilFunctions.revertGrammaredName(name) + ".json");
+    const dir = join(func.dir, UtilFunctions.revertGrammaredName(name) + '.json');
 
     if (!existsSync(func.dir)) { mkdirSync(func.dir, { recursive: true }); };
 
     await writeFileSync(dir, JSON.stringify({
-        type: "crafting_shaped",
+        type: 'crafting_shaped',
         pattern: [
-            "aaa",
-            "aaa",
-            "aaa"
+            'aaa',
+            'aaa',
+            'aaa'
         ],
         key: {
             a: {
-                item: "air"
+                item: 'air'
             }
         },
         result: {
-            item: "air"
+            item: 'air'
         }
     }, undefined, 2), {});
     commands.executeCommand('vscode.open', Uri.file(dir));

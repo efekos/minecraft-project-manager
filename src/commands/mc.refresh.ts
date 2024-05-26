@@ -1,4 +1,4 @@
-import { WorldsProvider } from "../class/WorldsProvider";
+import { WorldsProvider } from '../class/WorldsProvider';
 
 export default (provider: WorldsProvider) => {
     provider.refresh();

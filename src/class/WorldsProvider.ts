@@ -1,7 +1,7 @@
-import { existsSync, mkdirSync, readFileSync, readdirSync } from "fs";
-import { join } from "path";
-import { Command, Event, EventEmitter, ThemeIcon, TreeDataProvider, TreeItem, TreeItemCollapsibleState, TreeItemLabel, Uri } from "vscode";
-import { UtilFunctions } from "./UtilFunctions";
+import { Command, Event, EventEmitter, ThemeIcon, TreeDataProvider, TreeItem, TreeItemCollapsibleState, TreeItemLabel, Uri } from 'vscode';
+import { existsSync, mkdirSync, readFileSync, readdirSync } from 'fs';
+import { UtilFunctions } from './UtilFunctions';
+import { join } from 'path';
 
 // type to trick data provider that im using one type
 export type Items<T> = World<T> | T;
@@ -9,9 +9,6 @@ export type Items<T> = World<T> | T;
 export class WorldsProvider implements TreeDataProvider<Items<Datapack>> {
     private _onDidChangeTreeData: EventEmitter<Items<Datapack> | undefined | void> = new EventEmitter<Items<Datapack> | undefined | void>();
     readonly onDidChangeTreeData: Event<Items<Datapack> | undefined | void> = this._onDidChangeTreeData.event;
-
-    constructor() {
-    }
 
     /**
      * refreshes worlds menu
@@ -33,49 +30,49 @@ export class WorldsProvider implements TreeDataProvider<Items<Datapack>> {
      * @since 1.0.5
      */
     getVersionFromFormat(format: number): string {
-        if (format < 4) { return "1.14-"; };
+        if (format < 4) { return '1.14-'; };
         switch (format) {
-            case 4: return "1.14";
-            case 5: return "1.15";
-            case 6: return "1.16";
-            case 7: return "1.17";
-            case 8: return "1.18";
-            case 9: return "1.18.2";
-            case 10: return "1.19";
-            case 11: return "23w04a";
-            case 12: return "1.19.4";
-            case 13: return "23w13a";
-            case 14: return "23w16a";
-            case 15: return "1.20";
-            case 16: return "23w31a";
-            case 17: return "23w16a";
-            case 18: return "1.20.2";
-            case 19: return "23w40a";
-            case 20: return "23w41a";
-            case 21: return "23w42a";
-            case 22: return "23w43a";
-            case 23: return "23w44a";
-            case 24: return "23w45a";
-            case 25: return "23w46a";
-            case 26: return "1.20.4";
-            case 27: return "23w51a";
-            case 28: return "24w03a";
-            case 29: return "24w04a";
-            case 30: return "24w05a";
-            case 31: return "24w06a";
-            case 32: return "24w07a";
-            case 33: return "24w09a";
-            case 34: return "24w10a";
-            case 35: return "24w11a";
-            case 36: return "24w12a";
-            case 37: return "24w13a";
-            case 38: return "24w14a";
-            case 39: return "1.20.5-pre1";
-            case 40: return "1.20.5-pre2";
-            case 41: return "1.20.6";
+            case 4: return '1.14';
+            case 5: return '1.15';
+            case 6: return '1.16';
+            case 7: return '1.17';
+            case 8: return '1.18';
+            case 9: return '1.18.2';
+            case 10: return '1.19';
+            case 11: return '23w04a';
+            case 12: return '1.19.4';
+            case 13: return '23w13a';
+            case 14: return '23w16a';
+            case 15: return '1.20';
+            case 16: return '23w31a';
+            case 17: return '23w16a';
+            case 18: return '1.20.2';
+            case 19: return '23w40a';
+            case 20: return '23w41a';
+            case 21: return '23w42a';
+            case 22: return '23w43a';
+            case 23: return '23w44a';
+            case 24: return '23w45a';
+            case 25: return '23w46a';
+            case 26: return '1.20.4';
+            case 27: return '23w51a';
+            case 28: return '24w03a';
+            case 29: return '24w04a';
+            case 30: return '24w05a';
+            case 31: return '24w06a';
+            case 32: return '24w07a';
+            case 33: return '24w09a';
+            case 34: return '24w10a';
+            case 35: return '24w11a';
+            case 36: return '24w12a';
+            case 37: return '24w13a';
+            case 38: return '24w14a';
+            case 39: return '1.20.5-pre1';
+            case 40: return '1.20.5-pre2';
+            case 41: return '1.20.6';
         }
-        if (format > 41) { return "1.20.6+"; };
-        return "?";
+        if (format > 41) { return '1.20.6+'; };
+        return '?';
     }
 
     /**

@@ -1,7 +1,7 @@
-import { rmdir } from "fs";
-import { Datapack, WorldsProvider } from "../class/WorldsProvider";
-import { window } from "vscode";
-import { notifications } from "../class/NotificationProvider";
+import { Datapack, WorldsProvider } from '../class/WorldsProvider';
+import { notifications } from '../class/NotificationProvider';
+import { rmdir } from 'fs';
+import { window } from 'vscode';
 
 export default async (provider: WorldsProvider, pack: Datapack) => {
     {

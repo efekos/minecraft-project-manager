@@ -1,10 +1,10 @@
-import { existsSync, readFileSync, readdirSync } from 'fs';
-import { join } from 'path';
-import { Command, Event, EventEmitter, ThemeColor, ThemeIcon, TreeDataProvider, TreeItem, TreeItemCollapsibleState, TreeItemLabel, Uri, workspace } from 'vscode';
-import { UtilFunctions } from './UtilFunctions';
-import { notifications } from './NotificationProvider';
 import * as vscode from 'vscode';
+import { Command, Event, EventEmitter, ThemeColor, ThemeIcon, TreeDataProvider, TreeItem, TreeItemCollapsibleState, TreeItemLabel, Uri, workspace } from 'vscode';
+import { existsSync, readFileSync, readdirSync } from 'fs';
+import { UtilFunctions } from './UtilFunctions';
+import { join } from 'path';
 import { lang } from './LanguageProvider';
+import { notifications } from './NotificationProvider';
 
 function getChilds(element: PackItem): Thenable<PackItem[]> {
 
@@ -127,6 +127,7 @@ export class CurrentPackProvider implements TreeDataProvider<PackItem> {
     constructor(
         public readonly root: string | undefined
     ) {
+        this.root = root;
     }
 
     /**
@@ -222,7 +223,7 @@ export class PackItem extends TreeItem {
             try {
                 const file = readFileSync(dir);
                 const json = JSON.parse(file.toString());
-                const k: RecipeType = (json['type'] as RecipeType).replace("minecraft:", "") as RecipeType;
+                const k: RecipeType = (json['type'] as RecipeType).replace('minecraft:', '') as RecipeType;
 
                 if (k === 'crafting_shaped') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe'); }
                 else if (k === 'crafting_shapeless') { this.iconPath = UtilFunctions.getIconPaths('symbol-recipe-shapeless'); }
@@ -243,7 +244,7 @@ export class PackItem extends TreeItem {
             try {
                 const file = readFileSync(dir);
                 const json = JSON.parse(file.toString());
-                const k: LootTableType = (json['type'] as LootTableType).replace("minecraft:", "") as LootTableType;
+                const k: LootTableType = (json['type'] as LootTableType).replace('minecraft:', '') as LootTableType;
 
                 if (k === 'fishing') { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-fishing'); }
                 else if (k === 'entity') { this.iconPath = UtilFunctions.getIconPaths('symbol-loot-table-entity'); }

@@ -1,4 +1,4 @@
-import { CurrentPackProvider } from "../class/CurrentPackProvider";
+import { CurrentPackProvider } from '../class/CurrentPackProvider';
 
 export default (provider: CurrentPackProvider) => {
     provider.refresh();

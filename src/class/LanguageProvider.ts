@@ -1,6 +1,6 @@
-import { existsSync, readFileSync, readdirSync } from "fs";
-import { join } from "path";
-import axios from "axios";
+import { existsSync, readFileSync, readdirSync } from 'fs';
+import axios from 'axios';
+import { join } from 'path';
 
 var locale: Record<string, string> = {};
 
@@ -13,13 +13,13 @@ function loadNamespace(dir: string, code: string = 'en_us') {
 
     const json = JSON.parse(readFileSync(join(langPath, `${code}.json`)).toString()) as Record<string, string>;
 
-    console.log("loaded following: ", json);
+    console.log('loaded following: ', json);
 
     locale = { ...locale, ...json };
 }
 
 function loadPack(dir: string) {
-    console.log("Loading pack: " + dir);
+    console.log('Loading pack: ' + dir);
 
     const assetsPath = join(dir, 'assets');
     if (!existsSync(assetsPath)) { return; }
@@ -41,7 +41,7 @@ async function loadVanilla(code: string = 'en_us') {
             locale = { ...locale, ...response.data };
         }
     } catch (error) {
-        console.error("Error loading language file:", error);
+        console.error('Error loading language file:', error);
     }
 }
 
@@ -56,7 +56,7 @@ export namespace lang {
         const packs = readdirSync(dir);
         await packs.forEach(pack => loadPack(join(dir, pack)));
 
-        console.log("Successfully loaded the following locale data: ", locale);
+        console.log('Successfully loaded the following locale data: ', locale);
     }
 
     export function get(key: string): string {

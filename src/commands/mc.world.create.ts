@@ -1,15 +1,15 @@
-import { Uri, commands, window, workspace } from "vscode";
-import { Datapack, World, WorldsProvider } from "../class/WorldsProvider";
-import { join } from "path";
-import { mkdirSync, rm, writeFile } from "fs";
-import { notifications } from "../class/NotificationProvider";
+import { Datapack, World, WorldsProvider } from '../class/WorldsProvider';
+import { Uri, commands, window, workspace } from 'vscode';
+import { mkdirSync, rm, writeFile } from 'fs';
+import { join } from 'path';
+import { notifications } from '../class/NotificationProvider';
 
 export default async (provider: WorldsProvider, world: World<Datapack>) => {
     {
         //Gets a name for the pack
         const name = await window.showInputBox({ title: 'Enter Pack Name:', placeHolder: 'main', ignoreFocusOut: false });
-        if (!name) { return notifications.sendErrorMessage("You must give a name.", 'worlds.packCreateErr.nameRequired'); }
-        if (name.toLowerCase() !== name || name.includes(' ')) { return notifications.sendErrorMessage("Name can't include spaces.", 'worlds.packCreateErr.nameSpaces'); }
+        if (!name) { return notifications.sendErrorMessage('You must give a name.', 'worlds.packCreateErr.nameRequired'); }
+        if (name.toLowerCase() !== name || name.includes(' ')) { return notifications.sendErrorMessage('Name can\'t include spaces.', 'worlds.packCreateErr.nameSpaces'); }
 
         // makes a datapack dir from the pack name
         const dir = join(world.data.datapacksDirectory, name);
@@ -44,7 +44,7 @@ export default async (provider: WorldsProvider, world: World<Datapack>) => {
             notifications.sendErrorMessage(`Couldn't create the datapack: ${errs.length > 1 ? errs[0] : errs}`, 'worlds.packCreateErr.fsProblem');
         } else {
             notifications.sendInformationMessage('Successfully created a datapack!', 'worlds.packCreate', 'Open').then(value => {
-                if (value === "Open") {
+                if (value === 'Open') {
                     //open folder if user wants
                     commands.executeCommand('vscode.openFolder', Uri.file(dir));
                 }

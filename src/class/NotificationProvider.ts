@@ -1,6 +1,6 @@
-import { existsSync, mkdirSync, writeFileSync } from "fs";
-import { join } from "path";
-import { window } from "vscode";
+import { existsSync, mkdirSync, writeFileSync } from 'fs';
+import { join } from 'path';
+import { window } from 'vscode';
 
 const dir = join(process.env.APPDATA as string, '.minecraft', '.vscode', 'ignoreNots');
 export namespace notifications {
@@ -20,7 +20,7 @@ export namespace notifications {
             const msg = window.showInformationMessage(message, ...rest);
 
             msg.then(async v => {
-                if (v === "Do not show again") {
+                if (v === 'Do not show again') {
                     if (!existsSync(dir)) { await mkdirSync(dir, { recursive: true }); }
 
                     await writeFileSync(join(dir, id), 'ignore', { encoding: 'utf-8' });
@@ -47,7 +47,7 @@ export namespace notifications {
             const msg = window.showErrorMessage(message, ...rest);
 
             msg.then(async v => {
-                if (v === "Do not show again") {
+                if (v === 'Do not show again') {
                     if (!existsSync(dir)) { await mkdirSync(dir, { recursive: true }); }
 
                     await writeFileSync(join(dir, id), 'ignore', { encoding: 'utf-8' });
@@ -74,7 +74,7 @@ export namespace notifications {
             const msg = window.showWarningMessage(message, ...rest);
 
             msg.then(async v => {
-                if (v === "Do not show again") {
+                if (v === 'Do not show again') {
                     if (!existsSync(dir)) { await mkdirSync(dir, { recursive: true }); }
 
                     await writeFileSync(join(dir, id), 'ignore', { encoding: 'utf-8' });

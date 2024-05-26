@@ -1,11 +1,10 @@
-import { existsSync, lstat, readdirSync, stat } from "fs";
-import { MConfig } from "./CurrentPackProvider";
-import { notifications } from "./NotificationProvider";
-import { join } from "path";
+import { existsSync, readdirSync, stat } from 'fs';
+import { join } from 'path';
+import { notifications } from './NotificationProvider';
 
 export class UtilFunctions {
     public static getExtension(filename: string) {
-        return filename.split(".").pop();
+        return filename.split('.').pop();
     }
 
     public static getIconPaths(icon: string) {
@@ -17,7 +16,7 @@ export class UtilFunctions {
 
     public static makeNameGrammar(filename: string) {
         return filename // function_name.mcfunction ☹️
-            .split("_") // [function,name.mcfunction]
+            .split('_') // [function,name.mcfunction]
             .map(r => r[0].toUpperCase() + r.slice(1)) // [Function,Name.mcfunction]
             .join(' ') // Function Name.mcfunction
             .replace('.json', '')
@@ -65,7 +64,7 @@ export class UtilFunctions {
             readdirSync(dirr).forEach(file => {
                 const newDir = join(dirr, file);
 
-                if (file.endsWith(".nbt")) {
+                if (file.endsWith('.nbt')) {
                     finalPaths.push(newDir);
                 } else {
                     a(newDir);
@@ -75,6 +74,6 @@ export class UtilFunctions {
         }
 
         a(dir);
-        return finalPaths.map(r => r.replace(dir, "").slice(1));
+        return finalPaths.map(r => r.replace(dir, '').slice(1));
     }
 }

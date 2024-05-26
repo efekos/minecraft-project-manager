@@ -1,23 +1,23 @@
 
 import * as vscode from 'vscode';
+import { CurrentPackProvider, PackItem } from './class/CurrentPackProvider';
 import { Datapack, World, WorldsProvider } from './class/WorldsProvider';
-import mcRefresh from './commands/mc.refresh';
-import mcWorldCreate from './commands/mc.world.create';
+import { existsSync } from 'fs';
+import { join } from 'path';
+import { lang } from './class/LanguageProvider';
 import mcDatapackDelete from './commands/mc.datapack.delete';
 import mcOpen from './commands/mc.open';
-import { CurrentPackProvider, PackItem } from './class/CurrentPackProvider';
-import mcWorkspaceRefresh from './commands/mc.workspace.refresh';
-import { join } from 'path';
-import mcWorkspaceCreateFolder from './commands/mc.workspace.createFolder';
-import mcWorkspaceDelete from './commands/mc.workspace.delete';
-import mcWorkspaceCreateRecipe from './commands/mc.workspace.createRecipe';
-import mcWorkspaceCreateLootTable from './commands/mc.workspace.createLootTable';
-import mcWorkspaceImportStructure from './commands/mc.workspace.importStructure';
-import mcWorkspaceCreateFunction from './commands/mc.workspace.createFunction';
-import mcWorkspaceCreateTag from './commands/mc.workspace.createTag';
+import mcRefresh from './commands/mc.refresh';
 import mcWorkspaceCreateAdvancement from './commands/mc.workspace.createAdvancement';
-import { lang } from './class/LanguageProvider';
-import { existsSync } from 'fs';
+import mcWorkspaceCreateFolder from './commands/mc.workspace.createFolder';
+import mcWorkspaceCreateFunction from './commands/mc.workspace.createFunction';
+import mcWorkspaceCreateLootTable from './commands/mc.workspace.createLootTable';
+import mcWorkspaceCreateRecipe from './commands/mc.workspace.createRecipe';
+import mcWorkspaceCreateTag from './commands/mc.workspace.createTag';
+import mcWorkspaceDelete from './commands/mc.workspace.delete';
+import mcWorkspaceImportStructure from './commands/mc.workspace.importStructure';
+import mcWorkspaceRefresh from './commands/mc.workspace.refresh';
+import mcWorldCreate from './commands/mc.world.create';
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -39,7 +39,7 @@ export function activate(context: vscode.ExtensionContext) {
 	vscode.workspace.onDidChangeWorkspaceFolders(() => { cprovider.refresh(); });
 	vscode.workspace.onDidRenameFiles(() => { cprovider.refresh(); });
 	vscode.workspace.onDidSaveTextDocument(e => {
-		if (e.fileName === join(rootPath as string, 'mconfig.json') || e.languageId === "json") {
+		if (e.fileName === join(rootPath as string, 'mconfig.json') || e.languageId === 'json') {
 			cprovider.refresh();
 		}
 	});
@@ -58,7 +58,7 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerCommand('mc.workspace.createRecipe', (tag: PackItem) => mcWorkspaceCreateRecipe(cprovider, tag)),
 		vscode.commands.registerCommand('mc.workspace.createLootTable', (tag: PackItem) => mcWorkspaceCreateLootTable(cprovider, tag)),
 		vscode.commands.registerCommand('mc.workspace.createAdvancement', (tag: PackItem) => mcWorkspaceCreateAdvancement(cprovider, tag)),
-		vscode.commands.registerCommand('mc.workspace.importStructure', (tag: PackItem) => mcWorkspaceImportStructure(cprovider, tag, rootPath)),
+		vscode.commands.registerCommand('mc.workspace.importStructure', (tag: PackItem) => mcWorkspaceImportStructure(cprovider, tag, rootPath))
 	);
 
 	const path = join(process.env.APPDATA ?? '', '.minecraft', 'resourcepacks');
