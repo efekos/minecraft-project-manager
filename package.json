@@ -4,7 +4,7 @@
   "description": "Project Manager For Minecraft Datapacks",
   "version": "1.1.4",
   "engines": {
-    "vscode": "^1.89.0"
+    "vscode": "^1.91.0"
   },
   "icon": "images/extensionIcon.png",
   "repository": {
