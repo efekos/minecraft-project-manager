@@ -70,8 +70,15 @@ export class WorldsProvider implements TreeDataProvider<Items<Datapack>> {
             case 39: return '1.20.5-pre1';
             case 40: return '1.20.5-pre2';
             case 41: return '1.20.6';
+            case 42: return '24w18a';
+            case 43: return '24w19a';
+            case 44: return '24w20a';
+            case 45: return '24w21a';
+            case 46: return '1.21-pre1';
+            case 47: return '1.21-pre2';
+            case 48: return '1.21';
         }
-        if (format > 41) { return '1.20.6+'; };
+        if (format > 48) { return '1.21+'; };
         return '?';
     }
 
