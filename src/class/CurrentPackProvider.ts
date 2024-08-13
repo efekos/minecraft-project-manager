@@ -6,7 +6,7 @@ import { join } from 'path';
 import { lang } from './LanguageProvider';
 import { notifications } from './NotificationProvider';
 
-function getChilds(element: PackItem): Thenable<PackItem[]> {
+function getChilds(element: PackItem,format:number): Thenable<PackItem[]> {
 
     switch (element.type) {
         case PackItemType.namespace: // *get basic things under a namespace
@@ -156,10 +156,16 @@ export class CurrentPackProvider implements TreeDataProvider<PackItem> {
             return Promise.resolve([]); // stop if parsing mconfig fails
         }
         if (!UtilFunctions.confirmValidMConfig(this.root, mconfigJson)) { return Promise.resolve([]); } // stop if mconfig is invalid
+        const mConfig = mconfigJson as MConfig;
+        const mcmetaPath = join(this.root,mConfig.data,'..','pack.mcmeta');
+        if(!existsSync(mcmetaPath)) {
+            notifications.sendErrorMessage('No mcmeta found in parent of the data folder. Please check your mconfig.json and make sure pack.mcmeta exists','workspace.NoMcMeta');
+            return Promise.resolve([]);
+        }
 
 
         if (element) {
-            return getChilds(element);
+            return getChilds(element,mconfigJson);
         };
 
         //get namespaces
