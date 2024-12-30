@@ -1,4 +1,5 @@
 import { existsSync, readdirSync, stat } from 'fs';
+import { Uri } from 'vscode';
 import { join } from 'path';
 import { notifications } from './NotificationProvider';
 
@@ -9,8 +10,8 @@ export class UtilFunctions {
 
     public static getIconPaths(icon: string) {
         return {
-            light: join(__filename, '..', '..', 'images', 'icons', 'light', `${icon}.svg`),
-            dark: join(__filename, '..', '..', 'images', 'icons', 'dark', `${icon}.svg`)
+            light: Uri.file(join(__filename, '..', '..', 'images', 'icons', 'light', `${icon}.svg`)),
+            dark: Uri.file(join(__filename, '..', '..', 'images', 'icons', 'dark', `${icon}.svg`))
         };
     }
 

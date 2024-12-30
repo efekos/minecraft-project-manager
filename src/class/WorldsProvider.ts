@@ -1,4 +1,4 @@
-import { Command, Event, EventEmitter, ThemeIcon, TreeDataProvider, TreeItem, TreeItemCollapsibleState, TreeItemLabel, Uri } from 'vscode';
+import { Command, Event, EventEmitter, IconPath, ThemeIcon, TreeDataProvider, TreeItem, TreeItemCollapsibleState, TreeItemLabel, Uri } from 'vscode';
 import { existsSync, mkdirSync, readFileSync, readdirSync } from 'fs';
 import { UtilFunctions } from './UtilFunctions';
 import { join } from 'path';
@@ -18,8 +18,7 @@ export class WorldsProvider implements TreeDataProvider<Items<Datapack>> {
         this._onDidChangeTreeData.fire();
     }
 
-    //idk what this is why would i want to get a tree item when i already have it
-    getTreeItem(element: TreeItem): TreeItem {
+    getTreeItem(element: Items<Datapack>): TreeItem | Thenable<TreeItem> {
         return element;
     }
 
