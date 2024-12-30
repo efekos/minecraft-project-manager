@@ -26,8 +26,8 @@ export class WorldsProvider implements TreeDataProvider<Items<Datapack>> {
     /**
      * Gets mc version from a format
      * @param format pack format
-     * @returns mc version of what format means, with a - or + if its not between 1.14-24w05a
-     * @since 1.0.5
+     * @returns mc version of what format means, with a - or + if its not between 1.14-1.21.4
+     * @since 1.0.6
      */
     getVersionFromFormat(format: number): string {
         if (format < 4) { return '1.14-'; };
@@ -77,8 +77,21 @@ export class WorldsProvider implements TreeDataProvider<Items<Datapack>> {
             case 46: return '1.21-pre1';
             case 47: return '1.21-pre2';
             case 48: return '1.21';
+            case 49: return '24w33a';
+            case 50: return '24w34a';
+            case 51: return '24w35a';
+            case 52: return '24w36a';
+            case 53: return '24w37a';
+            case 54: return '24w38a';
+            case 55: return '24w39a';
+            case 56: return '24w40a';
+            case 57: return '1.21.2';
+            case 58: return '24w44a';
+            case 59: return '24w45a';
+            case 60: return '1.21.4-pre2';
+            case 61: return '1.21.4';
         }
-        if (format > 48) { return '1.21+'; };
+        if (format > 61) { return '1.21.4+'; };
         return '?';
     }
 
