@@ -9,6 +9,7 @@
 
 This extension will help you managing your Minecraft datapacks and switch between them easily.
 
+> [!IMPORTANT]
 > You must have Minecraft: Java Edition installed in default location for this extension to work properly!
 
 ## Features
