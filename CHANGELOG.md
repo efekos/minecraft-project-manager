@@ -125,4 +125,9 @@
 ## 1.1.4
 
 ![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-change.png) Bumped dependency versions.\
-![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-change.png) Updated pack formats
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-change.png) Updated pack formats.
+
+## 1.1.5
+
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-change.png) Bumped dependency versions.\
+![](https://raw.githubusercontent.com/efekos/efekos/main/icons/symbol-change.png) Updated pack formats.
