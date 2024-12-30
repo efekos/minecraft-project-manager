@@ -2,7 +2,7 @@
   "name": "minecraft-project-manager",
   "displayName": "Minecraft Project Manager",
   "description": "Project Manager For Minecraft Datapacks",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "engines": {
     "vscode": "^1.91.0"
   },
